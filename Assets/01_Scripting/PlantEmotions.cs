@@ -1,12 +1,20 @@
 using UnityEngine;
-using System.Collections;
+using System;
 using UnityEngine.UI;
 public class PlantEmotions : MonoBehaviour
 {
     #region Variables
-
+    [Serializable] private class PlantStatusses
+    {
+        public bool hasMoved = true;
+        public bool hasDaylight = true;
+        public bool hasWater = true;
+        public bool hasFood = true;
+    }
     #region Inpsector
     [Header("Stats")]
+    [Tooltip("DO NOT TOUCH, DEBUGGING PURPOSES ONLY")]
+    [SerializeField] private PlantStatusses plantStatusses;
     [Tooltip("How often the plant's emotion is updated")]
     [SerializeField] private float updateTime = 15;
 
@@ -17,8 +25,6 @@ public class PlantEmotions : MonoBehaviour
     #endregion
 
     #region Internal
-    private enum emotions { Happy, Dry, NotMoved, NoLight }
-    private emotions plantEmotion = emotions.Happy;
     #endregion
 
     #endregion
@@ -28,14 +34,33 @@ public class PlantEmotions : MonoBehaviour
     }
     private void UpdateEmotions()
     {
+        CheckWalking();
+
+        CheckSunlight();
+    }
+    private void CheckWalking()
+    {
         if (locationTracker.MetDistanceRequirement())
         {
-            plantEmotion = emotions.Happy;
+            plantStatusses.hasMoved = true;
             plantImage.color = Color.green;
         }
         else
         {
-            plantEmotion = emotions.NotMoved;
+            plantStatusses.hasMoved = false;
+            plantImage.color = Color.red;
+        }
+    }
+    private void CheckSunlight()
+    {
+        if (daylightTracker.MetDaylightRequirement())
+        {
+            plantStatusses.hasDaylight = true;
+            plantImage.color = Color.green;
+        }
+        else
+        {
+            plantStatusses.hasDaylight = false;
             plantImage.color = Color.red;
         }
     }
