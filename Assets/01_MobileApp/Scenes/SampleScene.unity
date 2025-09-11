@@ -410,6 +410,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c39764d5c939804ebe178606caaf1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlantEmotions
+  plantStatusses:
+    hasMoved: 1
+    hasDaylight: 1
+    hasWater: 1
+    hasFood: 1
   updateTime: 1
   locationTracker: {fileID: 845918007}
   daylightTracker: {fileID: 845918006}
@@ -773,7 +778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StepAndLocation
   minimumLux: 700
   minimumTime: 300
-  lightDisplay: {fileID: 1136356721}
+  daylightInterval: 1800
 --- !u!114 &845918007
 MonoBehaviour:
   m_ObjectHideFlags: 0
