@@ -1,11 +1,9 @@
 using UnityEngine;
 using System.Collections;
-using TMPro;
 using UnityEngine.Android;
 using System.Collections.Generic;
 using System.Linq;
 using System;
-
 public class LocationTracker : MonoBehaviour
 {
     #region floatiables

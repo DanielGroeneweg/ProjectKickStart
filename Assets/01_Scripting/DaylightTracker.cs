@@ -1,6 +1,9 @@
 using UnityEngine;
-using TMPro;
 using UnityEngine.Android;
+using System.Collections;
+using System.Collections.Generic;
+using System;
+using System.Linq;
 public class DaylightTracker : MonoBehaviour
 {
     #region Variables
@@ -13,14 +16,16 @@ public class DaylightTracker : MonoBehaviour
     [Tooltip("The minimum amount of time needed to have daylight in seconds")]
     [SerializeField] private float minimumTime = 300;
 
-    [Header("References")]
-    [SerializeField] private TMP_Text lightDisplay;
+    [Tooltip("The interval in which the user needs to reach the minimum sunlight time")]
+    [SerializeField] private float daylightInterval = 1800;
     #endregion
 
     #region Internal
     private WebCamTexture cameraTexture;
-    private float consecutiveLightTime = 0;
     private float lux = 0;
+
+    private bool isCounting = false;
+    private Dictionary<DateTime, float> datedSunlight = new Dictionary<DateTime, float>();
     #endregion
 
     #endregion
@@ -46,6 +51,7 @@ public class DaylightTracker : MonoBehaviour
     private void Update()
     {
         TrackDaylight();
+        if (!isCounting && lux >= minimumLux) StartCoroutine(LogSunTime());
     }
     /// <summary>
     /// Stores the current amount of light into a variable based on the camera
@@ -74,8 +80,51 @@ public class DaylightTracker : MonoBehaviour
         float avgBrightness = total / (pixels.Length / 10);
         float approximateLux = avgBrightness * 1000f; // scale to approximate lux
 
-        lightDisplay.text = $"{approximateLux:F1} lux";
         lux = approximateLux;
+    }
+    /// <summary>
+    /// Keeps track of consecutive daylight and logs it
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator LogSunTime()
+    {
+        isCounting = true;
+        float counter = 0;
+        while (isCounting)
+        {
+            if (lux >= minimumLux)
+            {
+                counter += Time.deltaTime;
+            }
+            else
+            {
+                datedSunlight.Add(DateTime.Now, counter);
+                isCounting = false;
+                counter = 0;
+            }
+            yield return null;
+        }
+    }
+    /// <summary>
+    /// Checks whether the daylight intake is equal to the minimum and returns true or false
+    /// </summary>
+    /// <returns></returns>
+    public bool MetDaylightRequirement()
+    {
+        DateTime intervalMinutesAgo = DateTime.Now.AddMinutes(-daylightInterval / 60f);
+        float sunlightTime = 0;
+
+        // Convert keys to a list so they can be indexed
+        var keys = datedSunlight.Keys.ToList();
+
+        for (int i = keys.Count - 1; i >= 0; i--)
+        {
+            DateTime time = keys[i];
+            if (time < intervalMinutesAgo) datedSunlight.Remove(time);
+            else sunlightTime += datedSunlight[time];
+        }
+
+        return (sunlightTime >= minimumTime);
     }
     void OnDisable()
     {
