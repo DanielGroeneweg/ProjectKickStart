@@ -91,9 +91,19 @@ public class LocationTracker : MonoBehaviour
     }
     private void Update()
     {
+        /*
         TrackPosition();
 
         DistanceTracker();
+        */
+
+        if (Input.GetKeyDown(KeyCode.Space)) timedDistances.Add(DateTime.Now, 1);
+
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began) timedDistances.Add(DateTime.Now, 1);
+        }
     }
     /// <summary>
     /// Checks and logs distances travelled in the dictionary

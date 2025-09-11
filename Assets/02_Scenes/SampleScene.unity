@@ -410,7 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c39764d5c939804ebe178606caaf1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlantEmotions
-  updateTime: 15
+  updateTime: 1
   locationTracker: {fileID: 845918007}
   daylightTracker: {fileID: 845918006}
   plantImage: {fileID: 287302340}
@@ -786,11 +786,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c73888b9973ef444c8bcb06ba85d7635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocationTracker
-  minimumWalkDistance: 1000
+  minimumWalkDistance: 5
   minimumTime: 600
   minDistFromHome: 20
   maxDistFromHome: 2000
-  walkingInterval: 1800
+  walkingInterval: 15
 --- !u!1 &1136356719
 GameObject:
   m_ObjectHideFlags: 0
