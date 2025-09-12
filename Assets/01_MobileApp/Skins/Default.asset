@@ -9,8 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 825744e575040d844a1181ec4cfcb83e, type: 3}
-  m_Name: InventoryData
-  m_EditorClassIdentifier: Assembly-CSharp::Inventory
-  coins: 600
-  unlockedSkins: 00000000
+  m_Script: {fileID: 11500000, guid: 14402d87290a6cc40b1553775bc0cd35, type: 3}
+  m_Name: Default
+  m_EditorClassIdentifier: Assembly-CSharp::Skin
+  skinType: 0
+  cost: 0
+  stateSkins:
+  - skin: {fileID: 0}
+    state: 0
+  - skin: {fileID: 0}
+    state: 0

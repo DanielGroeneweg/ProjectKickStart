@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+/// <summary>
+/// Loads data needed (like the inventory object)
+/// </summary>
 public class AppStartUp : MonoBehaviour
 {
     [SerializeField] private Inventory inventory;

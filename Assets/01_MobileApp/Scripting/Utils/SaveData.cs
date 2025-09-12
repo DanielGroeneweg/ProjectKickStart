@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 [System.Serializable]
-public class SaveData : MonoBehaviour
+public class SaveData
 {
     public int coins;
-    public List<Enums.SkinTypes> unlockedSkins = new();
+    public List<Enums.SkinTypes> unlockedSkins;
 }

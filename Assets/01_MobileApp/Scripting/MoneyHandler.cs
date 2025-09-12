@@ -14,7 +14,10 @@ public class MoneyHandler : MonoBehaviour
         inventory.coins += amount;
 
         // wrap in class
-        SaveData data = new SaveData { coins = inventory.coins, unlockedSkins = inventory.unlockedSkins };
+        SaveData data = new SaveData {
+            coins = inventory.coins,
+            unlockedSkins = inventory.unlockedSkins
+        };
 
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(savePath, json);

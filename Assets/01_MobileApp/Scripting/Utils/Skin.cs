@@ -5,6 +5,7 @@ using System;
 [CreateAssetMenu(fileName = "Skin", menuName = "Scriptable Objects/Skin")]
 public class Skin : ScriptableObject
 {
+    public Enums.SkinTypes skinType;
     [Serializable] public class StateSkins
     {
         public RawImage skin;
