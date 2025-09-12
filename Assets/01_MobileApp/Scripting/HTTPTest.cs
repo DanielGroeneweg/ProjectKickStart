@@ -13,10 +13,11 @@ public class HTTPTest : MonoBehaviour
 
     private string url = "https://gaming.statusloop.nl/"; // <-- must be HTTPS if on Android
 
-    private void Start()
+    private IEnumerator Start()
     {
         Debug.Log("Requesting");
         UnityWebRequest request = UnityWebRequest.Get(url);
+        yield return request.SendWebRequest();
 
         if (request.result != UnityWebRequest.Result.Success)
         {
@@ -27,5 +28,7 @@ public class HTTPTest : MonoBehaviour
             string json = request.downloadHandler.text;
             Debug.Log("Got JSON: " + json);
         }
+
+        Debug.Log(request.result);
     }
 }
