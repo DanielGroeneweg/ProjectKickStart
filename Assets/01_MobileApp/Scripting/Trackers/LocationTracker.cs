@@ -6,15 +6,12 @@ using System.Linq;
 using System;
 public class LocationTracker : MonoBehaviour
 {
-    #region floatiables
+    #region variables
 
     #region Inspector
     [Header("Stats")]
     [Tooltip("The minimum amount of distance needed to walk in meters")]
     [SerializeField] private float minimumWalkDistance = 1000;
-
-    [Tooltip("The minimum amount of time needed to walk in seconds")]
-    [SerializeField] private float minimumTime = 600;
 
     [Tooltip("The minimum distance needed to be away from home location to count as walking")]
     [SerializeField] private float minDistFromHome = 20;
@@ -24,6 +21,8 @@ public class LocationTracker : MonoBehaviour
 
     [Tooltip("The time interval in which a user needs to walk in seconds")]
     [SerializeField] private float walkingInterval = 1800;
+
+    [SerializeField] private bool debugging = true;
     #endregion
 
     #region Internal
@@ -89,18 +88,22 @@ public class LocationTracker : MonoBehaviour
     }
     private void Update()
     {
-        /*
-        TrackPosition();
-
-        DistanceTracker();
-        */
-
-        if (Input.GetKeyDown(KeyCode.Space)) timedDistances.Add(DateTime.Now, 1);
-
-        if (Input.touchCount > 0)
+        if (!debugging)
         {
-            Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began) timedDistances.Add(DateTime.Now, 1);
+            TrackPosition();
+
+            DistanceTracker();
+        }
+
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Space)) timedDistances.Add(DateTime.Now, 1);
+
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Began) timedDistances.Add(DateTime.Now, 1);
+            }
         }
     }
     /// <summary>

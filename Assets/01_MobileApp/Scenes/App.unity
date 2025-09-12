@@ -156,6 +156,65 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -170}
   m_SizeDelta: {x: 200, y: 153}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &219385265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 219385266}
+  - component: {fileID: 219385267}
+  - component: {fileID: 219385268}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &219385266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219385265}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &219385267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219385265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a88fba39a610c489ec8ef000fd07ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AppStartUp
+  inventory: {fileID: 11400000, guid: 57a500540c5c8754f89ec86b64aa176c, type: 2}
+--- !u!114 &219385268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219385265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9d18479c50d4f346ba2faa18f05515e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoneyHandler
+  inventory: {fileID: 11400000, guid: 57a500540c5c8754f89ec86b64aa176c, type: 2}
 --- !u!1 &287302338
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,7 +851,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocationTracker
   minimumWalkDistance: 5
-  minimumTime: 600
   minDistFromHome: 20
   maxDistFromHome: 2000
   walkingInterval: 15
@@ -1126,3 +1184,4 @@ SceneRoots:
   - {fileID: 845918005}
   - {fileID: 2124511541}
   - {fileID: 2039894469}
+  - {fileID: 219385266}
