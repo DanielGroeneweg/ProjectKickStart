@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Events;
 public class LootBox : MonoBehaviour
 {
     [SerializeField] private AvailableSkins skinList;
@@ -11,6 +12,7 @@ public class LootBox : MonoBehaviour
     [SerializeField] private int rareChance = 25;
     [SerializeField] private int epicChance = 4;
     [SerializeField] private int legendaryChance = 1;
+    [SerializeField] private UnityEvent<Skin> UnlockedEvent;
     public void Open()
     {
         CheckLootBoxAvailability();
@@ -36,6 +38,8 @@ public class LootBox : MonoBehaviour
         MoneyHandler.instance.AddCoins(-cost);
         inventory.unlockedSkins.Add(skin);
 
+
+        UnlockedEvent?.Invoke(skin);
         Debug.Log($"Unlocked {skin.name}");
     }
     private void OnValidate()
