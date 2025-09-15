@@ -15,6 +15,11 @@ public class GrowAPlant : MonoBehaviour
     }
     [SerializeField] private Inventory inventory;
     [SerializeField] private RawImage[] seeds = new RawImage[20];
+    [SerializeField] private Texture firstPhase;
+    [SerializeField] private Texture secondPhase;
+    [SerializeField] private Texture thirdPhase;
+    [SerializeField] private Texture fourthPhase;
+    [SerializeField] private Texture noSeed;
     private void OnEnable()
     {
         UpdateSeeds();
@@ -26,18 +31,23 @@ public class GrowAPlant : MonoBehaviour
             if (inventory.seeds[i].planted)
             {
                 float amount = inventory.seeds[i].distance / distanceToGrow;
-                Color color = new Color(amount, amount, amount);
-                seeds[i].color = color;
+
+                Debug.Log(amount);
+
+                if (amount < 0.25f) seeds[i].texture = firstPhase;
+                else if (amount < 0.5f) seeds[i].texture = secondPhase;
+                else if (amount < 0.75f) seeds[i].texture = thirdPhase;
+                else if (amount < 1) seeds[i].texture = fourthPhase;
 
                 if (amount >= 1)
                 {
                     lootbox.Open();
-                    seeds[i].color = Color.red;
+                    seeds[i].texture = noSeed;
                     inventory.seeds[i].planted = false;
                     inventory.seeds[i].distance = 0;
                 }
             }
-            else seeds[i].color = Color.red;
+            else seeds[i].texture = noSeed;
         }
     }
     public void PlantSeed()
