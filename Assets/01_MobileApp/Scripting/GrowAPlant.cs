@@ -32,8 +32,6 @@ public class GrowAPlant : MonoBehaviour
             {
                 float amount = inventory.seeds[i].distance / distanceToGrow;
 
-                Debug.Log(amount);
-
                 if (amount < 0.25f) seeds[i].texture = firstPhase;
                 else if (amount < 0.5f) seeds[i].texture = secondPhase;
                 else if (amount < 0.75f) seeds[i].texture = thirdPhase;
