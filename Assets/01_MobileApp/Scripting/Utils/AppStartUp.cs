@@ -22,6 +22,7 @@ public class AppStartUp : MonoBehaviour
             SaveData data = JsonUtility.FromJson<SaveData>(json);
 
             inventory.coins = data.coins;
+            inventory.unlockedSkins = new List<Skin>();
             
             foreach (string id in data.unlockedSkinsIDs)
             {
