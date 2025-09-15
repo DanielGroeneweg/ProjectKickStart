@@ -42,6 +42,8 @@ public class GrowAPlant : MonoBehaviour
     }
     public void PlantSeed()
     {
+        if (inventory.coins < cost) return;
+
         for (int i = 0; i < seeds.Length; i++)
         {
             if (inventory.seeds[i].planted) continue;
