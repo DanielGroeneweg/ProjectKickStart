@@ -30,7 +30,8 @@ public class MoneyHandler : MonoBehaviour
         SaveData data = new SaveData {
             coins = inventory.coins,
             unlockedSkinsIDs = ids,
-            distance = inventory.distanceWalked
+            distance = inventory.distanceWalked,
+            seeds = inventory.seeds
         };
 
         string json = JsonUtility.ToJson(data, true);

@@ -28,12 +28,15 @@ public class AppStartUp : MonoBehaviour
                 inventory.unlockedSkins.Add(availableSkins.skins.Find(s => s.ID == id));
             }
 
+            inventory.seeds = data.seeds ?? new GrowAPlant.Seed[20];
             inventory.distanceWalked = data.distance;
         }
         else
         {
             inventory.coins = 0;
             inventory.unlockedSkins = new List<Skin> { defaultSkin };
+            inventory.seeds = new GrowAPlant.Seed[20];
+            inventory.distanceWalked = 0;
         }
     }
 }
