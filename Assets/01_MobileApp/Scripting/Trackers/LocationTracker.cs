@@ -10,7 +10,7 @@ public class LocationTracker : MonoBehaviour
 
     #region Inspector
     [Header("Stats")]
-    [Tooltip("The minimum amount of distance needed to walk in meters")]
+    [Tooltip("The minimum amount of distance needed to walk to keep the plant happy in meters")]
     [SerializeField] private float minimumWalkDistance = 1000;
 
     [Tooltip("The minimum distance needed to be away from home location to count as walking")]
@@ -31,6 +31,8 @@ public class LocationTracker : MonoBehaviour
     private Vector3 homeLocation;
 
     private Dictionary<DateTime, float> timedDistances = new Dictionary<DateTime, float>();
+
+    [HideInInspector] public float distanceWalked;
     #endregion
 
     #endregion
@@ -106,6 +108,10 @@ public class LocationTracker : MonoBehaviour
             }
         }
     }
+    private void LogDistance(float distance)
+    {
+        distanceWalked += distance;
+    }
     /// <summary>
     /// Checks and logs distances travelled in the dictionary
     /// </summary>
@@ -118,7 +124,10 @@ public class LocationTracker : MonoBehaviour
             // Check for reasonable walking distance
             float distanceToHome = DistanceCalculator(location.x, location.y, homeLocation.x, homeLocation.y);
             if (distanceToHome > minDistFromHome && distanceToHome < maxDistFromHome)
+            {
                 timedDistances.Add(DateTime.Now, distance);
+                LogDistance(distance);
+            }
         }
     }
     /// <summary>

@@ -13,4 +13,16 @@ MonoBehaviour:
   m_Name: AvailableSkins
   m_EditorClassIdentifier: Assembly-CSharp::AvailableSkins
   skins:
+  - {fileID: 11400000, guid: 8026850793b2f714d8a53e5b6bc5b5fe, type: 2}
+  - {fileID: 11400000, guid: fb5f2591eb1f0264a8475d120daf1996, type: 2}
+  - {fileID: 11400000, guid: e7ddbd47cbb00c9499eeafcd81913685, type: 2}
+  - {fileID: 11400000, guid: 8dd6408846fd02b44977fdaffcb47e6e, type: 2}
+  - {fileID: 11400000, guid: 7d0835bc44684064dbf913897a3be85d, type: 2}
+  - {fileID: 11400000, guid: 0c7cd06a5d1570046891635f2bedd041, type: 2}
   - {fileID: 11400000, guid: 0cbc1e73ac9a2e040bce025c86ee228c, type: 2}
+  - {fileID: 11400000, guid: e9bd74ae0df444b46861638291605080, type: 2}
+  - {fileID: 11400000, guid: a64493e53c082944c90446ebc4c12b4a, type: 2}
+  - {fileID: 11400000, guid: 8753b7f756aca2248a78dadbc23b3d10, type: 2}
+  - {fileID: 11400000, guid: 6a7df66913e752c48870a8e9f87dc9fb, type: 2}
+  - {fileID: 11400000, guid: 0f4188bc03c30c24282dc72e67659355, type: 2}
+  - {fileID: 11400000, guid: 6eb1f87a3ec9ae64d81a5c84ae75c424, type: 2}

@@ -4,5 +4,6 @@ using System.Collections.Generic;
 public class Inventory : ScriptableObject
 {
     public int coins = 0;
-    public List<Enums.SkinTypes> unlockedSkins = new();
+    public List<Skin> unlockedSkins = new();
+    public float distanceWalked = 0;
 }

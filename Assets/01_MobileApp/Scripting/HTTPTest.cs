@@ -11,7 +11,7 @@ public class HTTPTest : MonoBehaviour
         UnityWebRequest.Post("gaming.statusloop.nl", dic);
     }
 
-    private string url = "https://gaming.statusloop.nl/"; // <-- must be HTTPS if on Android
+    private string url = "https://api.statusloop.nl/"; // <-- must be HTTPS if on Android
 
     private IEnumerator Start()
     {
@@ -29,6 +29,6 @@ public class HTTPTest : MonoBehaviour
             Debug.Log("Got JSON: " + json);
         }
 
-        Debug.Log(request.result);
+        Debug.Log(request.result + " " + request.error);
     }
 }

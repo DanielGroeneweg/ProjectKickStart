@@ -11,20 +11,32 @@ public class LootBox : MonoBehaviour
     [SerializeField] private int rareChance = 25;
     [SerializeField] private int epicChance = 4;
     [SerializeField] private int legendaryChance = 1;
-    public void CheckLootBoxAvailability()
+    public void Open()
     {
-        List<Skin> availableSkins = new List<Skin>();
-        foreach (Skin skin in skinList.skins)
-        {
-            if (!inventory.unlockedSkins.Contains(skin.skinType)) availableSkins.Add(skin);
-        }
-
-        if (availableSkins.Count > 0 && inventory.coins >= cost) OpenLootBox(GACHA.RandomSkinNotUnlocked(skinList, inventory));
+        CheckLootBoxAvailability();
     }
-    public void OpenLootBox(Skin skin)
+    private void CheckLootBoxAvailability()
     {
-        inventory.coins -= cost;
-        inventory.unlockedSkins.Add(skin.skinType);
+        Debug.Log("Buying");
+
+        Dictionary<Enums.Rarities, int> chances = new Dictionary<Enums.Rarities, int>
+        {
+            { Enums.Rarities.Common, commonChance },
+            { Enums.Rarities.Rare, rareChance },
+            { Enums.Rarities.Epic, epicChance },
+            { Enums.Rarities.Legendary, legendaryChance }
+        };
+
+        if (inventory.coins >= cost) OpenLootBox(GACHA.RandomSkinNotUnlocked(skinList.skins, chances));
+    }
+    private void OpenLootBox(Skin skin)
+    {
+        if (skin == null) return;
+
+        MoneyHandler.instance.AddCoins(-cost);
+        inventory.unlockedSkins.Add(skin);
+
+        Debug.Log($"Unlocked {skin.name}");
     }
     private void OnValidate()
     {

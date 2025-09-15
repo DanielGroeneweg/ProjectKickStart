@@ -4,5 +4,6 @@ using System.Collections.Generic;
 public class SaveData
 {
     public int coins;
-    public List<Enums.SkinTypes> unlockedSkins;
+    public List<string> unlockedSkinsIDs;
+    public float distance;
 }
