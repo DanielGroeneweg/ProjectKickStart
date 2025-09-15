@@ -4,7 +4,7 @@ public class MoneyDisplay : MonoBehaviour
 {
     [SerializeField] private TMP_Text display;
     [SerializeField] private Inventory inventory;
-    private void Start()
+    private void OnEnable()
     {
         UpdateMoney();
     }

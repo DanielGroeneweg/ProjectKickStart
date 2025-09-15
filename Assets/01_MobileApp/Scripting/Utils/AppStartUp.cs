@@ -23,6 +23,7 @@ public class AppStartUp : MonoBehaviour
 
             inventory.coins = data.coins;
             
+            inventory.unlockedSkins = new List<Skin>();
             foreach (string id in data.unlockedSkinsIDs)
             {
                 inventory.unlockedSkins.Add(availableSkins.skins.Find(s => s.ID == id));

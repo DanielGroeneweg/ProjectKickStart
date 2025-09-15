@@ -33,16 +33,23 @@ public class PlantEmotions : MonoBehaviour
     #endregion
     private void Start()
     {
-        InvokeRepeating(nameof(UpdateEmotions), 0, updateTime);
+        //InvokeRepeating(nameof(UpdateEmotions), 0, updateTime);
         InvokeRepeating(nameof(UpdateMoney), 0, updateTime);
     }
     private void UpdateMoney()
     {
         inventory.distanceWalked += locationTracker.distanceWalked;
+
+        foreach (GrowAPlant.Seed seed in inventory.seeds)
+        {
+            if (seed != null && seed.planted) seed.distance += locationTracker.distanceWalked;
+        }
+
         locationTracker.distanceWalked = 0;
         while (inventory.distanceWalked >= distanceForMoney)
         {
             inventory.distanceWalked -= distanceForMoney;
+
             MoneyHandler.instance.AddCoins(moneyCashOut);
         }
     }

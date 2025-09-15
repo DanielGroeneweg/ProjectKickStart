@@ -33,8 +33,8 @@ public class LootBox : MonoBehaviour
     {
         if (skin == null) return;
 
-        MoneyHandler.instance.AddCoins(-cost);
         inventory.unlockedSkins.Add(skin);
+        MoneyHandler.instance.AddCoins(-cost);
 
         Debug.Log($"Unlocked {skin.name}");
     }
