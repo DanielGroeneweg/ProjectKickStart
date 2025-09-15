@@ -7,6 +7,8 @@ using System.IO;
 public class AppStartUp : MonoBehaviour
 {
     [SerializeField] private Inventory inventory;
+    [SerializeField] private Skin defaultSkin;
+    [SerializeField] private AvailableSkins availableSkins;
     private static string savePath;
     private void Awake()
     {
@@ -20,12 +22,18 @@ public class AppStartUp : MonoBehaviour
             SaveData data = JsonUtility.FromJson<SaveData>(json);
 
             inventory.coins = data.coins;
-            inventory.unlockedSkins = data.unlockedSkins;
+            
+            foreach (string id in data.unlockedSkinsIDs)
+            {
+                inventory.unlockedSkins.Add(availableSkins.skins.Find(s => s.ID == id));
+            }
+
+            inventory.distanceWalked = data.distance;
         }
         else
         {
             inventory.coins = 0;
-            inventory.unlockedSkins = new List<Enums.SkinTypes> { Enums.SkinTypes.Default };
+            inventory.unlockedSkins = new List<Skin> { defaultSkin };
         }
     }
 }

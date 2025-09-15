@@ -10,13 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14402d87290a6cc40b1553775bc0cd35, type: 3}
-  m_Name: Pirate
+  m_Name: Sunflower
   m_EditorClassIdentifier: Assembly-CSharp::Skin
   cost: 10
-  rarity: 2
-  stateSkins:
-  - skin: {fileID: 0}
-    state: 0
-  - skin: {fileID: 0}
-    state: 1
-  _ID: 37cb5e08-e3ba-4f3c-8bac-ab507aec54ce
+  rarity: 1
+  stateSkins: []
+  _ID: 85b277c8-14d2-4597-927b-b4f118757465
