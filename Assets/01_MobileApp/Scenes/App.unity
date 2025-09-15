@@ -267,7 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DebuggingReset
   inventory: {fileID: 11400000, guid: 57a500540c5c8754f89ec86b64aa176c, type: 2}
   defaultSkin: {fileID: 11400000, guid: 6eb1f87a3ec9ae64d81a5c84ae75c424, type: 2}
-  moneyDisplay: {fileID: 0}
+  moneyDisplay: {fileID: 989832972}
 --- !u!1 &107595764
 GameObject:
   m_ObjectHideFlags: 0
