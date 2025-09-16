@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.Events;
 /// <summary>
 /// Loads data needed (like the inventory object)
 /// </summary>
@@ -9,6 +10,7 @@ public class AppStartUp : MonoBehaviour
     [SerializeField] private Inventory inventory;
     [SerializeField] private Skin defaultSkin;
     [SerializeField] private AvailableSkins availableSkins;
+    [SerializeField] private UnityEvent NoSaveFile;
     private static string savePath;
     private void Awake()
     {
@@ -31,6 +33,9 @@ public class AppStartUp : MonoBehaviour
 
             inventory.seeds = data.seeds ?? new GrowAPlant.Seed[20];
             inventory.distanceWalked = data.distance;
+
+            inventory.equippedSkin = availableSkins.skins.Find(s => s.ID == data.equippedSkinID);
+            inventory.username = data.username;
         }
         else
         {
@@ -38,6 +43,9 @@ public class AppStartUp : MonoBehaviour
             inventory.unlockedSkins = new List<Skin> { defaultSkin };
             inventory.seeds = new GrowAPlant.Seed[20];
             inventory.distanceWalked = 0;
+            inventory.equippedSkin = defaultSkin;
+            inventory.username = string.Empty;
+            NoSaveFile?.Invoke();
         }
     }
 }

@@ -28,7 +28,5 @@ public class HTTPTest : MonoBehaviour
             string json = request.downloadHandler.text;
             Debug.Log("Got JSON: " + json);
         }
-
-        Debug.Log(request.result + " " + request.error);
     }
 }

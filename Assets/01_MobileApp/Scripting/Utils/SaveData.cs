@@ -7,4 +7,6 @@ public class SaveData
     public List<string> unlockedSkinsIDs;
     public float distance;
     public GrowAPlant.Seed[] seeds;
+    public string equippedSkinID;
+    public string username;
 }

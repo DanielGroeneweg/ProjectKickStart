@@ -31,7 +31,9 @@ public class MoneyHandler : MonoBehaviour
             coins = inventory.coins,
             unlockedSkinsIDs = ids,
             distance = inventory.distanceWalked,
-            seeds = inventory.seeds
+            seeds = inventory.seeds,
+            equippedSkinID = inventory.equippedSkin.ID,
+            username = inventory.username
         };
 
         string json = JsonUtility.ToJson(data, true);
