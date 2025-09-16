@@ -10,8 +10,6 @@ public class Skin : ScriptableObject
         public RawImage skin;
         public Enums.States state;
     }
-    [Tooltip("The cost to unlock this skin")]
-    public int cost = 10;
     [Tooltip("The rarity of the skin")]
     public Enums.Rarities rarity;
     [Tooltip("All emotion versions of this skin, if an emotion is not set up it well default back to default happy skin")]
