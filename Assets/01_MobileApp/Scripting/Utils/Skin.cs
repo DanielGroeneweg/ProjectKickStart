@@ -5,9 +5,9 @@ using System;
 [CreateAssetMenu(fileName = "Skin", menuName = "Scriptable Objects/Skin")]
 public class Skin : ScriptableObject
 {
-    public Texture happyFace;
-    public Texture sadFace;
-    public Texture flower;
+    public Sprite happyFace;
+    public Sprite sadFace;
+    public Sprite flower;
     [Tooltip("The rarity of the skin")]
     public Enums.Rarities rarity;
 
