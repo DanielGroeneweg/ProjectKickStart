@@ -99,12 +99,12 @@ public class LocationTracker : MonoBehaviour
 
         else
         {
-            if (Input.GetKeyDown(KeyCode.Space)) timedDistances.Add(DateTime.Now, 1);
+            if (Input.GetKeyDown(KeyCode.Space)) timedDistances.Add(DateTime.Now, 5);
 
             if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
-                if (touch.phase == TouchPhase.Began) timedDistances.Add(DateTime.Now, 1);
+                if (touch.phase == TouchPhase.Began) timedDistances.Add(DateTime.Now, 5);
             }
         }
     }

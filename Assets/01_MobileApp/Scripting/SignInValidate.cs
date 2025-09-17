@@ -28,6 +28,7 @@ public class SignInValidate : MonoBehaviour
     }
     private IEnumerator Validate(bool isNewAccount)
     {
+        #region Errors
         if (string.IsNullOrEmpty(username))
         {
             InvalidInput?.Invoke();
@@ -50,6 +51,7 @@ public class SignInValidate : MonoBehaviour
             Error?.Invoke();
             yield break;
         }
+        #endregion
 
         if (isNewAccount)
         {
@@ -58,6 +60,7 @@ public class SignInValidate : MonoBehaviour
             {
                 inventory.username = username;
                 Creationsuccess?.Invoke();
+                UnityWebRequest post = UnityWebRequest.Post($"{url}/", "", "");
             }
         }
         else
