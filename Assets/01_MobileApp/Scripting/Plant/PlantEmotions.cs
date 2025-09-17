@@ -1,6 +1,8 @@
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using UnityEngine.Networking;
+using System.Collections;
 public class PlantEmotions : MonoBehaviour
 {
     #region Variables
@@ -55,6 +57,8 @@ public class PlantEmotions : MonoBehaviour
     }
     private void CheckWalking()
     {
+        bool value = plantStatusses.hasMoved;
+
         if (locationTracker.MetDistanceRequirement())
         {
             plantStatusses.hasMoved = true;
@@ -64,6 +68,26 @@ public class PlantEmotions : MonoBehaviour
         {
             plantStatusses.hasMoved = false;
             plantImage.color = Color.red;
+        }
+
+        if (value != plantStatusses.hasMoved)
+        {
+            User user = new User
+            {
+                name = inventory.username,
+                skinID = inventory.equippedSkin.ID,
+                hasWalked = plantStatusses.hasMoved
+            };
+
+            string json = JsonUtility.ToJson(user);
+
+            UnityWebRequest request = new UnityWebRequest($"https://api.statusloop.nl/users/", "PUT");
+            byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(json);
+            request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            request.downloadHandler = new DownloadHandlerBuffer();
+            request.SetRequestHeader("Content-Type", "application/json");
+
+            request.SendWebRequest();
         }
     }
 }

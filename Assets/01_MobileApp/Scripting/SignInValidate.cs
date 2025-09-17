@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 using System.Collections;
+using System.Collections.Generic;
 public class SignInValidate : MonoBehaviour
 {
     private string username;
@@ -60,7 +61,20 @@ public class SignInValidate : MonoBehaviour
             {
                 inventory.username = username;
                 Creationsuccess?.Invoke();
-                UnityWebRequest post = UnityWebRequest.Post($"{url}/", "", "");
+                User user = new User
+                {
+                    name = username
+                };
+
+                string json = JsonUtility.ToJson(user);
+
+                request = new UnityWebRequest($"{url}users/", "POST");
+                byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(json);
+                request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+                request.downloadHandler = new DownloadHandlerBuffer();
+                request.SetRequestHeader("Content-Type", "application/json");
+
+                yield return request.SendWebRequest();
             }
         }
         else
