@@ -18,7 +18,7 @@ MonoBehaviour:
   m_PlatformId: 4e3c793746204150860bf175a9a41a05
   m_PlatformBuildProfile:
     rid: 8989939381158805601
-  m_OverrideGlobalSceneList: 0
+  m_OverrideGlobalSceneList: 1
   m_Scenes: []
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
@@ -954,7 +954,7 @@ MonoBehaviour:
     - line: '|   qnxGraphicConfPath: '
     - line: '|   apiCompatibilityLevel: 6'
     - line: '|   captureStartupLogs: {}'
-    - line: '|   activeInputHandler: 0'
+    - line: '|   activeInputHandler: 2'
     - line: '|   windowsGamepadBackendHint: 0'
     - line: '|   cloudProjectId: 12d51926-8399-488a-96d0-9876baf437ae'
     - line: '|   framebufferDepthMemorylessMode: 0'
