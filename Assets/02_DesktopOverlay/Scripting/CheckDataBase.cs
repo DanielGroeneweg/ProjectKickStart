@@ -6,6 +6,7 @@ public class CheckDataBase : MonoBehaviour
 {
     [SerializeField] private Inventory inventory;
     [SerializeField] private AvailableSkins availableSkins;
+    [Tooltip("How many seconds it takes to check the database again")]
     [SerializeField] private float checkTime;
     [SerializeField] private UnityEvent<Enums.States> Moved;
     [SerializeField] private UnityEvent<Enums.States> NotMoved;
