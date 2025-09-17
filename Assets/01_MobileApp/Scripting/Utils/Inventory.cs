@@ -9,4 +9,5 @@ public class Inventory : ScriptableObject
     public float distanceWalked = 0;
     public GrowAPlant.Seed[] seeds = new GrowAPlant.Seed[20];
     public string username;
+    public bool hasWalked = false;
 }
