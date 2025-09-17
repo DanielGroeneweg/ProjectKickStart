@@ -7,9 +7,6 @@ public class PlantEmotions : MonoBehaviour
     [Serializable] private class PlantStatusses
     {
         public bool hasMoved = true;
-        public bool hasDaylight = true;
-        public bool hasWater = true;
-        public bool hasFood = true;
     }
     #region Inspector
     [Header("Stats")]
@@ -22,7 +19,6 @@ public class PlantEmotions : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private LocationTracker locationTracker;
-    [SerializeField] private DaylightTracker daylightTracker;
     [SerializeField] private RawImage plantImage;
     [SerializeField] private Inventory inventory;
     #endregion
@@ -33,8 +29,8 @@ public class PlantEmotions : MonoBehaviour
     #endregion
     private void Start()
     {
-        //InvokeRepeating(nameof(UpdateEmotions), 0, updateTime);
         InvokeRepeating(nameof(UpdateMoney), 0, updateTime);
+        InvokeRepeating(nameof(UpdateEmotions), 0, updateTime);
     }
     private void UpdateMoney()
     {
@@ -56,8 +52,6 @@ public class PlantEmotions : MonoBehaviour
     private void UpdateEmotions()
     {
         CheckWalking();
-
-        CheckSunlight();
     }
     private void CheckWalking()
     {
@@ -69,19 +63,6 @@ public class PlantEmotions : MonoBehaviour
         else
         {
             plantStatusses.hasMoved = false;
-            plantImage.color = Color.red;
-        }
-    }
-    private void CheckSunlight()
-    {
-        if (daylightTracker.MetDaylightRequirement())
-        {
-            plantStatusses.hasDaylight = true;
-            plantImage.color = Color.green;
-        }
-        else
-        {
-            plantStatusses.hasDaylight = false;
             plantImage.color = Color.red;
         }
     }
