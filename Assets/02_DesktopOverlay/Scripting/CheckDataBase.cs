@@ -1,11 +1,15 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using UnityEngine.Events;
 public class CheckDataBase : MonoBehaviour
 {
     [SerializeField] private Inventory inventory;
     [SerializeField] private AvailableSkins availableSkins;
     [SerializeField] private float checkTime;
+    [SerializeField] private UnityEvent<Enums.States> Moved;
+    [SerializeField] private UnityEvent<Enums.States> NotMoved;
+    [SerializeField] private UnityEvent<Skin> setSkin;
 
     private static string url = "https://api.statusloop.nl/";
     void Start()
@@ -33,7 +37,17 @@ public class CheckDataBase : MonoBehaviour
             {
                 inventory.equippedSkin = availableSkins.skins.Find(s => s.ID == wrapper.users[0].skinID);
                 inventory.hasWalked = wrapper.users[0].hasWalked;
+
+                setSkin?.Invoke(inventory.equippedSkin);
             }
         }
+
+        DetermineAction();
     }
+    private void DetermineAction()
+    {
+        if (inventory.hasWalked) Moved?.Invoke(Enums.States.Happy);
+        else NotMoved?.Invoke(Enums.States.Sad);
+    }
+
 }
