@@ -2567,6 +2567,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plant
       objectReference: {fileID: 0}
+    - target: {fileID: 4708155900235247842, guid: d63b144db006ea14db7690cee44472e4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7421321214552672100, guid: d63b144db006ea14db7690cee44472e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
