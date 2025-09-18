@@ -6,7 +6,6 @@ public class GrowAPlant : MonoBehaviour
 {
     [SerializeField] private float distanceToGrow = 30;
     [SerializeField] private LootBox lootbox;
-    [SerializeField] private int cost = 100;
     [Serializable]
     public class Seed
     {
@@ -46,23 +45,6 @@ public class GrowAPlant : MonoBehaviour
                 }
             }
             else seeds[i].texture = noSeed;
-        }
-    }
-    public void PlantSeed()
-    {
-        if (inventory.coins < cost) return;
-
-        for (int i = 0; i < seeds.Length; i++)
-        {
-            if (inventory.seeds[i].planted) continue;
-
-            else
-            {
-                inventory.seeds[i].planted = true;
-                MoneyHandler.instance.AddCoins(-cost);
-                UpdateSeeds();
-                break;
-            }
         }
     }
 }

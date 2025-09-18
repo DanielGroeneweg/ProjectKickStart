@@ -12,13 +12,18 @@ public class DebuggingReset : MonoBehaviour
         inventory.coins = 0;
         inventory.distanceWalked = 0;
         inventory.seeds = new GrowAPlant.Seed[20];
+        inventory.username = "daniel";
+        inventory.equippedSkin = defaultSkin;
+        inventory.hasWalked = false;
 
         SaveData data = new SaveData
         {
             coins = inventory.coins,
             unlockedSkinsIDs = new List<string> { defaultSkin.ID },
             distance = inventory.distanceWalked,
-            seeds = new GrowAPlant.Seed[20]
+            seeds = inventory.seeds,
+            username = inventory.username,
+            equippedSkinID = inventory.equippedSkin.ID,
         };
 
         string json = JsonUtility.ToJson(data, true);

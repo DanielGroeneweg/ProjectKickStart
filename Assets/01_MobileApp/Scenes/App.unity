@@ -1130,6 +1130,7 @@ GameObject:
   - component: {fileID: 204516071}
   - component: {fileID: 204516070}
   - component: {fileID: 204516069}
+  - component: {fileID: 204516072}
   m_Layer: 5
   m_Name: BuySeed
   m_TagString: Untagged
@@ -1201,8 +1202,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1302767784}
-        m_TargetAssemblyTypeName: GrowAPlant, Assembly-CSharp
+      - m_Target: {fileID: 204516072}
+        m_TargetAssemblyTypeName: SeedBuying, Assembly-CSharp
         m_MethodName: PlantSeed
         m_Mode: 1
         m_Arguments:
@@ -1251,6 +1252,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 204516067}
   m_CullTransparentMesh: 1
+--- !u!114 &204516072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204516067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b53d58624aeaa041863dee6f3ffa449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SeedBuying
+  inventory: {fileID: 11400000, guid: 57a500540c5c8754f89ec86b64aa176c, type: 2}
+  cost: 100
 --- !u!1 &219385265
 GameObject:
   m_ObjectHideFlags: 0
@@ -5492,7 +5507,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrowAPlant
   distanceToGrow: 15
   lootbox: {fileID: 1302767785}
-  cost: 100
   inventory: {fileID: 11400000, guid: 57a500540c5c8754f89ec86b64aa176c, type: 2}
   seeds:
   - {fileID: 319686370}
