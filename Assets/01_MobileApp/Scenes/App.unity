@@ -8004,8 +8004,8 @@ MonoBehaviour:
   rare: {fileID: 0}
   epic: {fileID: 0}
   legendary: {fileID: 0}
-  buttonClick: {fileID: 0}
-  pageSwitch: {fileID: 0}
+  buttonClick: {fileID: 8300000, guid: 2e4e6f038b96f914a88b08f093f63144, type: 3}
+  pageSwitch: {fileID: 8300000, guid: b9cdcfe542cbf644fbd22252d454559e, type: 3}
   music: {fileID: 8300000, guid: 0bc24e269fdf15647b1a1e227abe031b, type: 3}
   audioClipPrefab: {fileID: 547185045905318028, guid: 52994adfd9a573a41aabff8dc4e04db8, type: 3}
   instance: {fileID: 0}
