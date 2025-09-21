@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using JetBrains.Annotations;
 [Serializable]
 public class User
 {
@@ -8,9 +9,32 @@ public class User
     public int id;
     public bool hasWalked;
 }
-
 [Serializable]
 public class UserListWrapper
 {
     public User[] users;
+}
+[Serializable]
+public class FriendRequest
+{
+    public int sender;
+    public int receiver;
+    public int id;
+}
+[Serializable]
+public class FriendRequestListWrapper
+{
+    public FriendRequest[] friendRequests;
+}
+[Serializable]
+public class Friends
+{
+    public int user1;
+    public int user2;
+    public int id;
+}
+[Serializable]
+public class FriendsListWrapper
+{
+    public Friends[] friends;
 }
