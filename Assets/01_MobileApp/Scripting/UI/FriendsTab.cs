@@ -18,6 +18,8 @@ public class FriendsTab : MonoBehaviour
     private static string url = "https://api.statusloop.nl/";
 
     private string targetUser;
+
+    public static FriendsTab instance;
     #region Public methods
     public void UpdateFriendsTab(int? userID = null)
     {
@@ -32,13 +34,17 @@ public class FriendsTab : MonoBehaviour
     {
         StartCoroutine(SendFriendRequest());
     }
-    public void Accept()
+    public void Accept(int senderID, int receiverID)
     {
-
+        StartCoroutine(AcceptRequest(senderID, receiverID));
     }
-    public void Deny()
+    public void Deny(int senderID, int receiverID)
     {
-
+        StartCoroutine(DenyRequest(senderID, receiverID));
+    }
+    public void Cancel(int senderID, int receiverID)
+    {
+        StartCoroutine(CancelRequest(senderID, receiverID));
     }
     #endregion
 
@@ -90,10 +96,7 @@ public class FriendsTab : MonoBehaviour
         {
             UpdateRequests(frwrapper.friendRequests, userList, (int)userID);
         }
-
-        Debug.Log("done updating");
     }
-    #endregion
     private IEnumerator SendFriendRequest()
     {
         UnityWebRequest request = UnityWebRequest.Get($"{url}users/");
@@ -145,16 +148,103 @@ public class FriendsTab : MonoBehaviour
 
         UpdateFriendsTab(userID);
     }
-    /*
-    private IEnumerator AcceptRequest()
+    private IEnumerator AcceptRequest(int senderID, int receiverID)
     {
-        UpdateFriendsTab();
+        UnityWebRequest get = UnityWebRequest.Get($"{url}friend_requests/{receiverID}");
+        yield return get.SendWebRequest();
+        string rawJson = get.downloadHandler.text;
+        string wrappedJson = "{ \"friendRequests\": " + rawJson + " }";
+        FriendRequestListWrapper wrapper = JsonUtility.FromJson<FriendRequestListWrapper>(wrappedJson);
+
+        foreach(FriendRequest friendRequest in wrapper.friendRequests)
+        {
+            if (friendRequest.sender == senderID && friendRequest.receiver == receiverID)
+            {
+                // Add friends
+                Friends friends = new Friends
+                {
+                    user1 = senderID,
+                    user2 = receiverID
+                };
+                string json = JsonUtility.ToJson(friends);
+
+                UnityWebRequest post = new UnityWebRequest($"{url}friends/", "POST");
+                byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(json);
+                post.uploadHandler = new UploadHandlerRaw(bodyRaw);
+                post.downloadHandler = new DownloadHandlerBuffer();
+                post.SetRequestHeader("Content-Type", "application/json");
+
+                yield return post.SendWebRequest();
+
+                // Delete request
+                string endpoint = $"{url}friend_requests/{friendRequest.id}";
+                using (UnityWebRequest delete = UnityWebRequest.Delete(endpoint))
+                {
+                    // A DownloadHandler is required to receive response text (if any)
+                    delete.downloadHandler = new DownloadHandlerBuffer();
+
+                    yield return delete.SendWebRequest();
+                    break;
+                }
+            }
+        }
+
+        UpdateFriendsTab(receiverID);
     }
-    private IEnumerator DenyRequest()
+    private IEnumerator DenyRequest(int senderID, int receiverID)
     {
-        UpdateFriendsTab();
+        UnityWebRequest get = UnityWebRequest.Get($"{url}friend_requests/{receiverID}");
+        yield return get.SendWebRequest();
+        string rawJson = get.downloadHandler.text;
+        string wrappedJson = "{ \"friendRequests\": " + rawJson + " }";
+        FriendRequestListWrapper wrapper = JsonUtility.FromJson<FriendRequestListWrapper>(wrappedJson);
+
+        foreach (FriendRequest friendRequest in wrapper.friendRequests)
+        {
+            if (friendRequest.sender == senderID && friendRequest.receiver == receiverID)
+            {
+                // Delete request
+                string endpoint = $"{url}friend_requests/{friendRequest.id}";
+                using (UnityWebRequest delete = UnityWebRequest.Delete(endpoint))
+                {
+                    // A DownloadHandler is required to receive response text (if any)
+                    delete.downloadHandler = new DownloadHandlerBuffer();
+
+                    yield return delete.SendWebRequest();
+                    break;
+                }
+            }
+        }
+
+        UpdateFriendsTab(receiverID);
     }
-    */
+    private IEnumerator CancelRequest(int senderID, int receiverID)
+    {
+        UnityWebRequest get = UnityWebRequest.Get($"{url}friend_requests/{receiverID}");
+        yield return get.SendWebRequest();
+        string rawJson = get.downloadHandler.text;
+        string wrappedJson = "{ \"friendRequests\": " + rawJson + " }";
+        FriendRequestListWrapper wrapper = JsonUtility.FromJson<FriendRequestListWrapper>(wrappedJson);
+
+        foreach (FriendRequest friendRequest in wrapper.friendRequests)
+        {
+            if (friendRequest.sender == senderID && friendRequest.receiver == receiverID)
+            {
+                // Delete request
+                string endpoint = $"{url}friend_requests/{friendRequest.id}";
+                using (UnityWebRequest delete = UnityWebRequest.Delete(endpoint))
+                {
+                    // A DownloadHandler is required to receive response text (if any)
+                    delete.downloadHandler = new DownloadHandlerBuffer();
+
+                    yield return delete.SendWebRequest();
+                    break;
+                }
+            }
+        }
+
+        UpdateFriendsTab(senderID);
+    }
     private void UpdateFriends(Friends[] friends, List<User> users, int userID)
     {
         // Remove friends
@@ -184,7 +274,7 @@ public class FriendsTab : MonoBehaviour
 
             UserDisplay display = Instantiate(userFramePrefab, friendList.transform);
             display.SetUserName(name);
-            display.id = id;
+            display.userID = id;
         }
 
         friendList.sizeDelta = new Vector2(friendList.sizeDelta.x, userFramePrefab.CardHeight() * friends.Length);
@@ -210,24 +300,22 @@ public class FriendsTab : MonoBehaviour
         foreach (FriendRequest fr in requests)
         {
             string name = null;
-            int id = 0;
             RectTransform parent = null;
             if (fr.sender != userID)
             {
                 name = users.Find(s => s.id == fr.sender).name;
-                id = fr.sender;
                 parent = requestIncomingList;
             }
 
             else if (fr.receiver != userID)
             {
                 name = users.Find(s => s.id == fr.receiver).name;
-                id = fr.receiver;
                 parent = requestOutgoingList;
             }
             UserDisplay display = Instantiate(userFramePrefab, parent.transform);
             display.SetUserName(name);
-            display.id = id;
+            display.senderID = fr.sender;
+            display.receiverID = fr.receiver;
 
             if (parent == requestIncomingList) _requestsIncoming.Add(display);
             else _requestsOutgoing.Add(display);
@@ -236,4 +324,10 @@ public class FriendsTab : MonoBehaviour
         requestIncomingList.sizeDelta = new Vector2(requestIncomingList.sizeDelta.x, userFramePrefab.CardHeight() * _requestsIncoming.Count);
         requestOutgoingList.sizeDelta = new Vector2(requestOutgoingList.sizeDelta.x, userFramePrefab.CardHeight() * _requestsOutgoing.Count);
     }
+    private void Awake()
+    {
+        if (instance == null && instance != this) instance = this;
+        else Destroy(gameObject);
+    }
+    #endregion
 }
