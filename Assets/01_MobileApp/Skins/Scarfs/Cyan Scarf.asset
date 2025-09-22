@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14402d87290a6cc40b1553775bc0cd35, type: 3}
+  m_Name: Cyan Scarf
+  m_EditorClassIdentifier: Assembly-CSharp::Skin
+  rarity: 0
+  skinType: 2
+  skin: {fileID: 2800000, guid: 6fc97fcb23dce9f4591b6b060a447776, type: 3}
+  _ID: 16e31385-881d-481c-8407-44c1074f7add
