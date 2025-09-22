@@ -82,12 +82,14 @@ public class PlantEmotions : MonoBehaviour
             {
                 name = inventory.username,
                 flowerID = inventory.equippedSkin.flower.ID,
+                stemID = inventory.equippedSkin.stem.ID,
+                potID = inventory.equippedSkin.pot.ID,
                 hasWalked = plantStatusses.hasMoved
             };
 
-            user.scarfID = "";
-            user.hatID = "";
-            user.glassesID = "";
+            user.scarfID = string.Empty;
+            user.hatID = string.Empty;
+            user.glassesID = string.Empty;
 
             if (inventory.equippedSkin.scarf != null) user.scarfID = inventory.equippedSkin.scarf.ID;
             if (inventory.equippedSkin.hat != null) user.hatID = inventory.equippedSkin.hat.ID;

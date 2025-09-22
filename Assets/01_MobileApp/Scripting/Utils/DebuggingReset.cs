@@ -32,9 +32,9 @@ public class DebuggingReset : MonoBehaviour
             equippedPotID = inventory.equippedSkin.pot.ID,
         };
 
-        data.equippedScarfID = "";
-        data.equippedHatID = "";
-        data.equippedGlassesID = "";
+        data.equippedScarfID = string.Empty;
+        data.equippedHatID = string.Empty;
+        data.equippedGlassesID = string.Empty;
 
         if (inventory.equippedSkin.scarf != null) data.equippedScarfID = inventory.equippedSkin.scarf.ID;
         if (inventory.equippedSkin.hat != null) data.equippedHatID = inventory.equippedSkin.hat.ID;
