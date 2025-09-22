@@ -10,6 +10,10 @@ public class Skin : ScriptableObject
     public Sprite flower;
     [Tooltip("The rarity of the skin")]
     public Enums.Rarities rarity;
+    [Tooltip("The type of cosmetic")]
+    public Enums.SkinTypes skinType;
+    [Tooltip("The actual image")]
+    public Texture skin;
 
     [SerializeField, HideInInspector] private string _ID;
     public string ID => _ID;
