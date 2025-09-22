@@ -11,9 +11,9 @@ public class FriendsTab : MonoBehaviour
     [SerializeField] private RectTransform requestIncomingList;
     [SerializeField] private Inventory inventory;
 
-    private List<UserDisplay> _friends = new List<UserDisplay>();
-    private List<UserDisplay> _requestsIncoming = new List<UserDisplay>();
-    private List<UserDisplay> _requestsOutgoing = new List<UserDisplay>();
+    [SerializeField] private List<UserDisplay> _friends = new List<UserDisplay>();
+    [SerializeField] private List<UserDisplay> _requestsIncoming = new List<UserDisplay>();
+    [SerializeField] private List<UserDisplay> _requestsOutgoing = new List<UserDisplay>();
 
     private static string url = "https://api.statusloop.nl/";
 
@@ -66,11 +66,11 @@ public class FriendsTab : MonoBehaviour
 
         UserListWrapper wrapper = JsonUtility.FromJson<UserListWrapper>(wrappedJson);
 
-        if (wrapper != null && wrapper.users != null && userID == null)
+        if (wrapper != null && wrapper.users != null)
         {
             foreach (User user in wrapper.users)
             {
-                if (user.name == inventory.username) userID = user.id;
+                if (user.name == inventory.username && userID == null) userID = user.id;
                 userList.Add(user);
             }
         }
@@ -252,7 +252,7 @@ public class FriendsTab : MonoBehaviour
         {
             UserDisplay friend = _friends[i];
             _friends.Remove(friend);
-            Destroy(friend);
+            Destroy(friend.gameObject);
         }
 
         // Add friends
@@ -284,17 +284,19 @@ public class FriendsTab : MonoBehaviour
         // Remove requests
         for (int i = _requestsIncoming.Count - 1; i >= 0; i--)
         {
-            UserDisplay friend = _friends[i];
+            UserDisplay friend = _requestsIncoming[i];
             _requestsIncoming.Remove(friend);
-            Destroy(friend);
+            Destroy(friend.gameObject);
         }
 
         for (int i = _requestsOutgoing.Count - 1; i >= 0; i--)
         {
-            UserDisplay friend = _friends[i];
+            UserDisplay friend = _requestsOutgoing[i];
             _requestsOutgoing.Remove(friend);
-            Destroy(friend);
+            Destroy(friend.gameObject);
         }
+
+        Debug.Log(requests.Length);
 
         // Add requests
         foreach (FriendRequest fr in requests)

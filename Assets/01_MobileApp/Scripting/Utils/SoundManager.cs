@@ -71,7 +71,11 @@ public class SoundManager : MonoBehaviour
     #region Setup
     private void Awake()
     {
-        if (instance == null) instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            PlayMusic();
+        }
         else Destroy(gameObject);
     }
     #endregion
