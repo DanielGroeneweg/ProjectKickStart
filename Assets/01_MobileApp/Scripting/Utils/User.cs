@@ -38,3 +38,13 @@ public class FriendsListWrapper
 {
     public Friends[] friends;
 }
+[Serializable]
+public class FlowerSkin
+{
+    public Skin flower;
+    public Skin stem;
+    public Skin pot;
+    public Skin hat;
+    public Skin scarf;
+    public Skin glasses;
+}

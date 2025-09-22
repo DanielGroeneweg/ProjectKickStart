@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Yellow Scarf
   m_EditorClassIdentifier: Assembly-CSharp::Skin
   rarity: 0
-  skinType: 2
-  skin: {fileID: 2800000, guid: 56fe4e09e09688f43955fe174bc5d2c7, type: 3}
-  _ID: 16e31385-881d-481c-8407-44c1074f7add
+  skinType: 0
+  skin: {fileID: 0}
+  _ID: 

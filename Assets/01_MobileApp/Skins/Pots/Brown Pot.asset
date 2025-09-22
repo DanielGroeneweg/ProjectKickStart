@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Skin
   rarity: 0
   skinType: 4
-  skin: {fileID: 2800000, guid: 9510f114c4bb3f14392d6003f24785db, type: 3}
-  _ID: ec81f975-4086-450b-b521-91ebc704fd92
+  skin: {fileID: -3132748707963144345, guid: 9510f114c4bb3f14392d6003f24785db, type: 3}
+  _ID: 78049af8-abf9-4a79-b563-d1fb39734b19
