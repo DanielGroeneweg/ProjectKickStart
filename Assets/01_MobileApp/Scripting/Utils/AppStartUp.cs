@@ -8,7 +8,9 @@ using UnityEngine.Events;
 public class AppStartUp : MonoBehaviour
 {
     [SerializeField] private Inventory inventory;
-    [SerializeField] private Skin defaultSkin;
+    [SerializeField] private Skin defaultFlower;
+    [SerializeField] private Skin defaultPot;
+    [SerializeField] private Skin defaultStem;
     [SerializeField] private AvailableSkins availableSkins;
     [SerializeField] private UnityEvent NoSaveFile;
     private static string savePath;
@@ -34,16 +36,31 @@ public class AppStartUp : MonoBehaviour
             inventory.seeds = data.seeds ?? new GrowAPlant.Seed[20];
             inventory.distanceWalked = data.distance;
 
-            inventory.equippedSkin = availableSkins.skins.Find(s => s.ID == data.equippedSkinID);
+            inventory.equippedSkin.flower = availableSkins.skins.Find(s => s.ID == data.equippedFlowerID);
+            inventory.equippedSkin.stem = availableSkins.skins.Find(s => s.ID == data.equippedStemID);
+            inventory.equippedSkin.pot = availableSkins.skins.Find(s => s.ID == data.equippedPotID);
+
+            inventory.equippedSkin.hat = null;
+            inventory.equippedSkin.glasses = null;
+            inventory.equippedSkin.scarf = null;
+
+            if (!string.IsNullOrEmpty(data.equippedHatID)) inventory.equippedSkin.hat = availableSkins.skins.Find(s => s.ID == data.equippedHatID);
+            if (!string.IsNullOrEmpty(data.equippedScarfID)) inventory.equippedSkin.scarf = availableSkins.skins.Find(s => s.ID == data.equippedScarfID);
+            if (!string.IsNullOrEmpty(data.equippedGlassesID)) inventory.equippedSkin.glasses = availableSkins.skins.Find(s => s.ID == data.equippedGlassesID);
             inventory.username = data.username;
         }
         else
         {
             inventory.coins = 0;
-            inventory.unlockedSkins = new List<Skin> { defaultSkin };
+            inventory.unlockedSkins = new List<Skin> { defaultFlower, defaultPot, defaultStem };
             inventory.seeds = new GrowAPlant.Seed[20];
             inventory.distanceWalked = 0;
-            inventory.equippedSkin = defaultSkin;
+            inventory.equippedSkin = new FlowerSkin
+            {
+                flower = defaultFlower,
+                stem = defaultStem,
+                pot = defaultPot
+            };
             inventory.username = string.Empty;
             inventory.hasWalked = true;
             NoSaveFile?.Invoke();

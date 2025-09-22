@@ -5,7 +5,12 @@ using JetBrains.Annotations;
 public class User
 {
     public string name;
-    public string skinID;
+    public string flowerID;
+    public string stemID;
+    public string potID;
+    public string glassesID;
+    public string hatID;
+    public string scarfID;
     public int id;
     public bool hasWalked;
 }

@@ -81,9 +81,17 @@ public class PlantEmotions : MonoBehaviour
             User user = new User
             {
                 name = inventory.username,
-                skinID = inventory.equippedSkin.ID,
+                flowerID = inventory.equippedSkin.flower.ID,
                 hasWalked = plantStatusses.hasMoved
             };
+
+            user.scarfID = "";
+            user.hatID = "";
+            user.glassesID = "";
+
+            if (inventory.equippedSkin.scarf != null) user.scarfID = inventory.equippedSkin.scarf.ID;
+            if (inventory.equippedSkin.hat != null) user.hatID = inventory.equippedSkin.hat.ID;
+            if (inventory.equippedSkin.glasses != null) user.glassesID = inventory.equippedSkin.glasses.ID;
 
             string json = JsonUtility.ToJson(user);
 

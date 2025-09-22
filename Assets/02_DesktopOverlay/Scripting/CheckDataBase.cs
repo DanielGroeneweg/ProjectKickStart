@@ -35,10 +35,26 @@ public class CheckDataBase : MonoBehaviour
         {
             if (wrapper.users.Length > 0)
             {
-                inventory.equippedSkin = availableSkins.skins.Find(s => s.ID == wrapper.users[0].skinID);
                 inventory.hasWalked = wrapper.users[0].hasWalked;
 
-                setSkin?.Invoke(inventory.equippedSkin);
+                inventory.equippedSkin.flower = availableSkins.skins.Find(s => s.ID == wrapper.users[0].flowerID);
+                inventory.equippedSkin.stem = availableSkins.skins.Find(s => s.ID == wrapper.users[0].stemID);
+                inventory.equippedSkin.pot = availableSkins.skins.Find(s => s.ID == wrapper.users[0].potID);
+
+                inventory.equippedSkin.hat = null;
+                inventory.equippedSkin.glasses = null;
+                inventory.equippedSkin.scarf = null;
+
+                if (!string.IsNullOrEmpty(wrapper.users[0].hatID)) inventory.equippedSkin.hat = availableSkins.skins.Find(s => s.ID == wrapper.users[0].hatID);
+                if (!string.IsNullOrEmpty(wrapper.users[0].scarfID)) inventory.equippedSkin.scarf = availableSkins.skins.Find(s => s.ID == wrapper.users[0].scarfID);
+                if (!string.IsNullOrEmpty(wrapper.users[0].glassesID)) inventory.equippedSkin.glasses = availableSkins.skins.Find(s => s.ID == wrapper.users[0].glassesID);
+
+                setSkin?.Invoke(inventory.equippedSkin.flower);
+                setSkin?.Invoke(inventory.equippedSkin.pot);
+                setSkin?.Invoke(inventory.equippedSkin.stem);
+                if (inventory.equippedSkin.scarf != null) setSkin?.Invoke(inventory.equippedSkin.scarf);
+                if (inventory.equippedSkin.glasses != null) setSkin?.Invoke(inventory.equippedSkin.glasses);
+                if (inventory.equippedSkin.hat != null) setSkin?.Invoke(inventory.equippedSkin.hat);
             }
         }
 

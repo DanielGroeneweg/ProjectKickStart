@@ -4,27 +4,41 @@ using System.IO;
 public class DebuggingReset : MonoBehaviour
 {
     [SerializeField] private Inventory inventory;
-    [SerializeField] private Skin defaultSkin;
+    [SerializeField] private Skin defaultFlower;
+    [SerializeField] private Skin defaultStem;
+    [SerializeField] private Skin defaultPot;
     [SerializeField] private MoneyDisplay moneyDisplay;
     public void ResetInventory()
     {
-        inventory.unlockedSkins = new List<Skin> { defaultSkin };
+        inventory.unlockedSkins = new List<Skin> { defaultFlower, defaultStem, defaultPot };
         inventory.coins = 0;
         inventory.distanceWalked = 0;
         inventory.seeds = new GrowAPlant.Seed[20];
         inventory.username = "daniel";
-        inventory.equippedSkin = defaultSkin;
+        inventory.equippedSkin.flower = defaultFlower;
+        inventory.equippedSkin.stem = defaultStem;
+        inventory.equippedSkin.pot = defaultPot;
         inventory.hasWalked = false;
 
         SaveData data = new SaveData
         {
             coins = inventory.coins,
-            unlockedSkinsIDs = new List<string> { defaultSkin.ID },
+            unlockedSkinsIDs = new List<string> { defaultFlower.ID, defaultPot.ID, defaultStem.ID },
             distance = inventory.distanceWalked,
             seeds = inventory.seeds,
             username = inventory.username,
-            equippedSkinID = inventory.equippedSkin.ID,
+            equippedFlowerID = inventory.equippedSkin.flower.ID,
+            equippedStemID = inventory.equippedSkin.stem.ID,
+            equippedPotID = inventory.equippedSkin.pot.ID,
         };
+
+        data.equippedScarfID = "";
+        data.equippedHatID = "";
+        data.equippedGlassesID = "";
+
+        if (inventory.equippedSkin.scarf != null) data.equippedScarfID = inventory.equippedSkin.scarf.ID;
+        if (inventory.equippedSkin.hat != null) data.equippedHatID = inventory.equippedSkin.hat.ID;
+        if (inventory.equippedSkin.glasses != null) data.equippedGlassesID = inventory.equippedSkin.glasses.ID;
 
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(Application.persistentDataPath + "/inventory.json", json);

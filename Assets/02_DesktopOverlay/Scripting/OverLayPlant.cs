@@ -17,7 +17,12 @@ public class OverLayPlant : MonoBehaviour
         happyFace.gameObject.SetActive(isHappy);
         sadFace.gameObject.SetActive(!isHappy);
 
-        SetSkin(inventory.equippedSkin);
+        SetSkin(inventory.equippedSkin.flower);
+        SetSkin(inventory.equippedSkin.hat);
+        SetSkin(inventory.equippedSkin.scarf);
+        SetSkin(inventory.equippedSkin.glasses);
+        SetSkin(inventory.equippedSkin.stem);
+        SetSkin(inventory.equippedSkin.pot);
     }
     public void SetSkin(Skin skin)
     {

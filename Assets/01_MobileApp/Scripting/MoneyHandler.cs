@@ -32,9 +32,19 @@ public class MoneyHandler : MonoBehaviour
             unlockedSkinsIDs = ids,
             distance = inventory.distanceWalked,
             seeds = inventory.seeds,
-            equippedSkinID = inventory.equippedSkin.ID,
+            equippedFlowerID = inventory.equippedSkin.flower.ID,
+            equippedStemID = inventory.equippedSkin.stem.ID,
+            equippedPotID = inventory.equippedSkin.pot.ID,
             username = inventory.username
         };
+
+        data.equippedScarfID = "";
+        data.equippedHatID = "";
+        data.equippedGlassesID = "";
+
+        if (inventory.equippedSkin.scarf != null) data.equippedScarfID = inventory.equippedSkin.scarf.ID;
+        if (inventory.equippedSkin.hat != null) data.equippedHatID = inventory.equippedSkin.hat.ID;
+        if (inventory.equippedSkin.glasses != null) data.equippedGlassesID = inventory.equippedSkin.glasses.ID;
 
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(savePath, json);
