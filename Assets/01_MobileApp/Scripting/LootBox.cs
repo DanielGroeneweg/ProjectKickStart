@@ -19,8 +19,6 @@ public class LootBox : MonoBehaviour
     }
     private void CheckLootBoxAvailability()
     {
-        Debug.Log("Buying");
-
         Dictionary<Enums.Rarities, int> chances = new Dictionary<Enums.Rarities, int>
         {
             { Enums.Rarities.Common, commonChance },

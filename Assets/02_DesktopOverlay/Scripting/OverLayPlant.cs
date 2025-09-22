@@ -8,7 +8,6 @@ public class OverLayPlant : MonoBehaviour
     [SerializeField] private Inventory inventory;
     public void SetEmotion(Enums.States plantState)
     {
-        Debug.Log(plantState);
         bool isHappy = plantState == Enums.States.Happy;
         happyFace.gameObject.SetActive(isHappy);
         sadFace.gameObject.SetActive(!isHappy);

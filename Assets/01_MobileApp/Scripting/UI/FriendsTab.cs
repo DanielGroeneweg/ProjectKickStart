@@ -4,7 +4,9 @@ using System.Collections;
 using UnityEngine.Networking;
 public class FriendsTab : MonoBehaviour
 {
-    [SerializeField] private UserDisplay userFramePrefab;
+    [SerializeField] private UserDisplay friendPrefab;
+    [SerializeField] private UserDisplay requestIncomingPrefab;
+    [SerializeField] private UserDisplay requestOutgoingPrefab;
     [SerializeField] private RectTransform friendList;
     [SerializeField] private RectTransform requestOutgoingList;
     [SerializeField] private RectTransform requestIncomingList;
@@ -149,7 +151,7 @@ public class FriendsTab : MonoBehaviour
     }
     private IEnumerator AcceptRequest(int senderID, int receiverID)
     {
-        UnityWebRequest get = UnityWebRequest.Get($"{url}friend_requests/{receiverID}");
+        UnityWebRequest get = UnityWebRequest.Get($"{url}friend_requests/user/{receiverID}");
         yield return get.SendWebRequest();
         string rawJson = get.downloadHandler.text;
         string wrappedJson = "{ \"friendRequests\": " + rawJson + " }";
@@ -192,7 +194,7 @@ public class FriendsTab : MonoBehaviour
     }
     private IEnumerator DenyRequest(int senderID, int receiverID)
     {
-        UnityWebRequest get = UnityWebRequest.Get($"{url}friend_requests/{receiverID}");
+        UnityWebRequest get = UnityWebRequest.Get($"{url}friend_requests/user/{receiverID}");
         yield return get.SendWebRequest();
         string rawJson = get.downloadHandler.text;
         string wrappedJson = "{ \"friendRequests\": " + rawJson + " }";
@@ -219,7 +221,7 @@ public class FriendsTab : MonoBehaviour
     }
     private IEnumerator CancelRequest(int senderID, int receiverID)
     {
-        UnityWebRequest get = UnityWebRequest.Get($"{url}friend_requests/{receiverID}");
+        UnityWebRequest get = UnityWebRequest.Get($"{url}friend_requests/user/{receiverID}");
         yield return get.SendWebRequest();
         string rawJson = get.downloadHandler.text;
         string wrappedJson = "{ \"friendRequests\": " + rawJson + " }";
@@ -271,12 +273,13 @@ public class FriendsTab : MonoBehaviour
                 id = friend.user2;
             }
 
-            UserDisplay display = Instantiate(userFramePrefab, friendList.transform);
+            UserDisplay display = Instantiate(friendPrefab, friendList.transform);
             display.SetUserName(name);
             display.userID = id;
+            _friends.Add(display);
         }
 
-        friendList.sizeDelta = new Vector2(friendList.sizeDelta.x, userFramePrefab.CardHeight() * friends.Length);
+        friendList.sizeDelta = new Vector2(friendList.sizeDelta.x, friendPrefab.CardHeight() * friends.Length);
     }
     private void UpdateRequests(FriendRequest[] requests, List<User> users, int userID)
     {
@@ -311,17 +314,28 @@ public class FriendsTab : MonoBehaviour
                 name = users.Find(s => s.id == fr.receiver).name;
                 parent = requestOutgoingList;
             }
-            UserDisplay display = Instantiate(userFramePrefab, parent.transform);
-            display.SetUserName(name);
-            display.senderID = fr.sender;
-            display.receiverID = fr.receiver;
 
-            if (parent == requestIncomingList) _requestsIncoming.Add(display);
-            else _requestsOutgoing.Add(display);
+
+            if (parent == requestIncomingList)
+            {
+                UserDisplay display = Instantiate(requestIncomingPrefab, parent.transform);
+                display.SetUserName(name);
+                display.senderID = fr.sender;
+                display.receiverID = fr.receiver;
+                _requestsIncoming.Add(display);
+            }
+            else
+            {
+                UserDisplay display = Instantiate(requestOutgoingPrefab, parent.transform);
+                display.SetUserName(name);
+                display.senderID = fr.sender;
+                display.receiverID = fr.receiver;
+                _requestsOutgoing.Add(display);
+            }
         }
 
-        requestIncomingList.sizeDelta = new Vector2(requestIncomingList.sizeDelta.x, userFramePrefab.CardHeight() * _requestsIncoming.Count);
-        requestOutgoingList.sizeDelta = new Vector2(requestOutgoingList.sizeDelta.x, userFramePrefab.CardHeight() * _requestsOutgoing.Count);
+        requestIncomingList.sizeDelta = new Vector2(requestIncomingList.sizeDelta.x, requestIncomingPrefab.CardHeight() * _requestsIncoming.Count);
+        requestOutgoingList.sizeDelta = new Vector2(requestOutgoingList.sizeDelta.x, requestOutgoingPrefab.CardHeight() * _requestsOutgoing.Count);
     }
     private void Awake()
     {

@@ -33,7 +33,6 @@ public class CheckDataBase : MonoBehaviour
 
         if (wrapper != null && wrapper.users != null)
         {
-            Debug.Log("Parsed users: " + wrapper.users.Length);
             if (wrapper.users.Length > 0)
             {
                 inventory.equippedSkin = availableSkins.skins.Find(s => s.ID == wrapper.users[0].skinID);

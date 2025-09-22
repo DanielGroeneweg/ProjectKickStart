@@ -10634,7 +10634,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f5b1a9ef7b0544981f3e4015a1c5b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FriendsTab
-  userFramePrefab: {fileID: 6761258542697294302, guid: 2a9b5f1b808189e4099e6467b38c0005, type: 3}
+  friendPrefab: {fileID: 6761258542697294302, guid: 2a9b5f1b808189e4099e6467b38c0005, type: 3}
+  requestIncomingPrefab: {fileID: 6761258542697294302, guid: 8d883c6afeb380243b3ac7c36c5bd958, type: 3}
+  requestOutgoingPrefab: {fileID: 6761258542697294302, guid: 12dbd3cfec4e01248a80e81323d5ede8, type: 3}
   friendList: {fileID: 331590874}
   requestOutgoingList: {fileID: 1149067654}
   requestIncomingList: {fileID: 382028455}

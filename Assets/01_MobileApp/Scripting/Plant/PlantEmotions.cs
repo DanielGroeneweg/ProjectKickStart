@@ -70,8 +70,6 @@ public class PlantEmotions : MonoBehaviour
             plantStatusses.hasMoved = false;
         }
 
-        Debug.Log(plantStatusses.hasMoved);
-
         if (value != plantStatusses.hasMoved)
         {
             Enums.States state = Enums.States.Happy;
