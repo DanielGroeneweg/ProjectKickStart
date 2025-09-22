@@ -326,8 +326,7 @@ public class FriendsTab : MonoBehaviour
     }
     private void Awake()
     {
-        if (instance == null && instance != this) instance = this;
-        else Destroy(gameObject);
+        instance = this;
     }
     #endregion
 }
