@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.Networking;
-using static UnityEngine.Rendering.DebugUI;
 public class FriendsTab : MonoBehaviour
 {
     [SerializeField] private UserDisplay userFramePrefab;
@@ -295,8 +294,6 @@ public class FriendsTab : MonoBehaviour
             _requestsOutgoing.Remove(friend);
             Destroy(friend.gameObject);
         }
-
-        Debug.Log(requests.Length);
 
         // Add requests
         foreach (FriendRequest fr in requests)

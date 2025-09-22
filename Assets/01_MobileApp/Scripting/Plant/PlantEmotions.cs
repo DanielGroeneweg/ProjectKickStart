@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 using UnityEngine.Networking;
-using System.Collections;
+using UnityEngine.Events;
 public class PlantEmotions : MonoBehaviour
 {
     #region Variables
@@ -19,9 +19,11 @@ public class PlantEmotions : MonoBehaviour
     [SerializeField] private float distanceForMoney = 0;
     [SerializeField] private int moneyCashOut = 0;
 
+    [Header("Events")]
+    public UnityEvent<Enums.States> PlantStatusChanged;
+
     [Header("References")]
     [SerializeField] private LocationTracker locationTracker;
-    [SerializeField] private RawImage plantImage;
     [SerializeField] private Inventory inventory;
     #endregion
 
@@ -29,7 +31,7 @@ public class PlantEmotions : MonoBehaviour
     #endregion
 
     #endregion
-    private void Start()
+    private void OnEnable()
     {
         InvokeRepeating(nameof(UpdateMoney), 0, updateTime);
         InvokeRepeating(nameof(UpdateEmotions), 0, updateTime);
@@ -57,21 +59,27 @@ public class PlantEmotions : MonoBehaviour
     }
     private void CheckWalking()
     {
-        bool value = plantStatusses.hasMoved;
+        bool value = inventory.hasWalked;
 
         if (locationTracker.MetDistanceRequirement())
         {
             plantStatusses.hasMoved = true;
-            plantImage.color = Color.green;
         }
         else
         {
             plantStatusses.hasMoved = false;
-            plantImage.color = Color.red;
         }
+
+        Debug.Log(plantStatusses.hasMoved);
 
         if (value != plantStatusses.hasMoved)
         {
+            Enums.States state = Enums.States.Happy;
+            if (!plantStatusses.hasMoved) state = Enums.States.Sad;
+            PlantStatusChanged?.Invoke(state);
+
+            inventory.hasWalked = plantStatusses.hasMoved;
+
             User user = new User
             {
                 name = inventory.username,

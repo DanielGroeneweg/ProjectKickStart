@@ -45,6 +45,7 @@ public class AppStartUp : MonoBehaviour
             inventory.distanceWalked = 0;
             inventory.equippedSkin = defaultSkin;
             inventory.username = string.Empty;
+            inventory.hasWalked = true;
             NoSaveFile?.Invoke();
         }
     }
