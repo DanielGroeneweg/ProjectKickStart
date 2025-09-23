@@ -13,9 +13,16 @@ public class OverLayPlant : MonoBehaviour
     [SerializeField] private Inventory inventory;
 
     public static OverLayPlant instance;
-    private void Awake()
+    private void OnEnable()
     {
         instance = this;
+
+        SetSkin(inventory.equippedSkin.flower);
+        SetSkin(inventory.equippedSkin.hat, Enums.SkinTypes.Hat);
+        SetSkin(inventory.equippedSkin.scarf, Enums.SkinTypes.Scarf);
+        SetSkin(inventory.equippedSkin.glasses, Enums.SkinTypes.Glasses);
+        SetSkin(inventory.equippedSkin.stem);
+        SetSkin(inventory.equippedSkin.pot);
     }
     public void SetEmotion(Enums.States plantState)
     {

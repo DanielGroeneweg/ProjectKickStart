@@ -13,6 +13,7 @@ public class AppStartUp : MonoBehaviour
     [SerializeField] private Skin defaultStem;
     [SerializeField] private AvailableSkins availableSkins;
     [SerializeField] private UnityEvent NoSaveFile;
+    [SerializeField] private UnityEvent Loaded;
     private static string savePath;
     private void Awake()
     {
@@ -48,6 +49,8 @@ public class AppStartUp : MonoBehaviour
             if (!string.IsNullOrEmpty(data.equippedScarfID)) inventory.equippedSkin.scarf = availableSkins.skins.Find(s => s.ID == data.equippedScarfID);
             if (!string.IsNullOrEmpty(data.equippedGlassesID)) inventory.equippedSkin.glasses = availableSkins.skins.Find(s => s.ID == data.equippedGlassesID);
             inventory.username = data.username;
+
+            Loaded.Invoke();
         }
         else
         {
