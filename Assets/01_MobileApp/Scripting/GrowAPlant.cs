@@ -55,6 +55,8 @@ public class GrowAPlant : MonoBehaviour
     {
         float amount = inventory.seeds[i].distance / distanceToGrow;
 
+        Debug.Log(amount);
+
         if (amount >= 1)
         {
             inventory.unlockedSkins.Add(inventory.seeds[i].skin);
