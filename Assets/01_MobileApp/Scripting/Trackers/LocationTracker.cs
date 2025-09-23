@@ -21,8 +21,6 @@ public class LocationTracker : MonoBehaviour
 
     [Tooltip("The time interval in which a user needs to walk in seconds")]
     [SerializeField] private float walkingInterval = 1800;
-
-    [SerializeField] private bool debugging = true;
     #endregion
 
     #region Internal
@@ -90,23 +88,9 @@ public class LocationTracker : MonoBehaviour
     }
     private void Update()
     {
-        if (!debugging)
-        {
-            TrackPosition();
+        TrackPosition();
 
-            DistanceTracker();
-        }
-
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Space)) timedDistances.Add(DateTime.Now, 5);
-
-            if (Input.touchCount > 0)
-            {
-                Touch touch = Input.GetTouch(0);
-                if (touch.phase == TouchPhase.Began) timedDistances.Add(DateTime.Now, 5);
-            }
-        }
+        DistanceTracker();
     }
     private void LogDistance(float distance)
     {
@@ -186,5 +170,9 @@ public class LocationTracker : MonoBehaviour
         float c = 2 * Mathf.Atan2(Mathf.Sqrt(a), Mathf.Sqrt(1 - a));
         float d = R * c;
         return (float)(d * 1000); // meters
+    }
+    public void Cheat()
+    {
+        timedDistances.Add(DateTime.Now, 5);
     }
 }

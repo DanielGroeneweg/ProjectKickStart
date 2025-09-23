@@ -7,7 +7,6 @@ public class DebuggingReset : MonoBehaviour
     [SerializeField] private Skin defaultFlower;
     [SerializeField] private Skin defaultStem;
     [SerializeField] private Skin defaultPot;
-    [SerializeField] private MoneyDisplay moneyDisplay;
     public void ResetInventory()
     {
         inventory.unlockedSkins = new List<Skin> { defaultFlower, defaultStem, defaultPot };
@@ -40,9 +39,14 @@ public class DebuggingReset : MonoBehaviour
         if (inventory.equippedSkin.hat != null) data.equippedHatID = inventory.equippedSkin.hat.ID;
         if (inventory.equippedSkin.glasses != null) data.equippedGlassesID = inventory.equippedSkin.glasses.ID;
 
+        OverLayPlant.instance.SetSkin(inventory.equippedSkin.flower);
+        OverLayPlant.instance.SetSkin(inventory.equippedSkin.pot);
+        OverLayPlant.instance.SetSkin(inventory.equippedSkin.stem);
+        OverLayPlant.instance.SetSkin(inventory.equippedSkin.hat, Enums.SkinTypes.Hat);
+        OverLayPlant.instance.SetSkin(inventory.equippedSkin.scarf, Enums.SkinTypes.Scarf);
+        OverLayPlant.instance.SetSkin(inventory.equippedSkin.glasses, Enums.SkinTypes.Glasses);
+
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(Application.persistentDataPath + "/inventory.json", json);
-
-        moneyDisplay.UpdateMoney();
     }
 }

@@ -60,9 +60,9 @@ public class PlantEmotions : MonoBehaviour
     }
     private void CheckWalking()
     {
-        bool value = inventory.hasWalked;
+        Debug.Log("Checking");
 
-        Debug.Log(value);
+        bool value = inventory.hasWalked;
 
         if (locationTracker.MetDistanceRequirement())
         {
