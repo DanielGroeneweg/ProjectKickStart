@@ -1,9 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System.Collections.Generic;
-using Unity.Burst.Intrinsics;
-
+using UnityEngine.Events;
 public class LootBoxText : MonoBehaviour
 {
     [Header("References")]
@@ -16,6 +14,8 @@ public class LootBoxText : MonoBehaviour
     [SerializeField] private Texture rarePlant;
     [SerializeField] private Texture epicPlant;
     [SerializeField] private Texture legendaryPlant;
+
+    public UnityEvent<Enums.Rarities> OpenBox;
     public void SetDisplay(Skin skin)
     {
         display.text = $"{skin.rarity}";
@@ -40,5 +40,7 @@ public class LootBoxText : MonoBehaviour
         croppedTexture.SetPixels(pixels);
         croppedTexture.Apply();
         item.texture = croppedTexture;
+
+        OpenBox?.Invoke(skin.rarity);
     }
 }
