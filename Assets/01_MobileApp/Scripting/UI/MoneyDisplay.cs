@@ -10,6 +10,6 @@ public class MoneyDisplay : MonoBehaviour
     }
     public void UpdateMoney()
     {
-        display.text = $"Money: {inventory.coins}";
+        display.text = $"{inventory.coins}";
     }
 }
