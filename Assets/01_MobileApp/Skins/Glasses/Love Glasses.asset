@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14402d87290a6cc40b1553775bc0cd35, type: 3}
   m_Name: Love Glasses
   m_EditorClassIdentifier: Assembly-CSharp::Skin
-  rarity: 0
+  rarity: 2
   skinType: 1
   skin: {fileID: 21300000, guid: 235a545039f77b14a86f63307f387c33, type: 3}
   _ID: a34464fe-042e-40b0-9391-fed714488f89

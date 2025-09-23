@@ -23,6 +23,9 @@ public class OverLayPlant : MonoBehaviour
         SetSkin(inventory.equippedSkin.glasses, Enums.SkinTypes.Glasses);
         SetSkin(inventory.equippedSkin.stem);
         SetSkin(inventory.equippedSkin.pot);
+
+        if (inventory.hasWalked) SetEmotion(Enums.States.Happy);
+        else SetEmotion(Enums.States.Sad);
     }
     public void SetEmotion(Enums.States plantState)
     {

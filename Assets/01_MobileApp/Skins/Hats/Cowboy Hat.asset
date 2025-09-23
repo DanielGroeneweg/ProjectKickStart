@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14402d87290a6cc40b1553775bc0cd35, type: 3}
   m_Name: Cowboy Hat
   m_EditorClassIdentifier: Assembly-CSharp::Skin
-  rarity: 0
+  rarity: 1
   skinType: 0
   skin: {fileID: 21300000, guid: caaa1e4d8b3598948914b03cc2de69ee, type: 3}
   _ID: 4d643ea6-17b6-42f8-8139-e102d2e690c6

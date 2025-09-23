@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14402d87290a6cc40b1553775bc0cd35, type: 3}
   m_Name: Top Hat
   m_EditorClassIdentifier: Assembly-CSharp::Skin
-  rarity: 0
+  rarity: 1
   skinType: 0
   skin: {fileID: 21300000, guid: d38b706486f69004ab8d7d4a05c9a788, type: 3}
   _ID: 745547cd-f23e-456e-8f07-4e757c404f93

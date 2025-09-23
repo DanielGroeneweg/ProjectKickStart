@@ -12,51 +12,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 825744e575040d844a1181ec4cfcb83e, type: 3}
   m_Name: InventoryData
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
-  equippedSkin: {fileID: 11400000, guid: 6eb1f87a3ec9ae64d81a5c84ae75c424, type: 2}
+  equippedSkin:
+    flower: {fileID: 11400000, guid: 6a7df66913e752c48870a8e9f87dc9fb, type: 2}
+    stem: {fileID: 11400000, guid: 454ebacb9a20f25498337156ce8831d6, type: 2}
+    pot: {fileID: 11400000, guid: ef4a3529599ac824c8f01cf35ff59a72, type: 2}
+    hat: {fileID: 0}
+    scarf: {fileID: 0}
+    glasses: {fileID: 0}
   coins: 0
   unlockedSkins:
-  - {fileID: 11400000, guid: 6eb1f87a3ec9ae64d81a5c84ae75c424, type: 2}
+  - {fileID: 11400000, guid: 6a7df66913e752c48870a8e9f87dc9fb, type: 2}
+  - {fileID: 11400000, guid: ef4a3529599ac824c8f01cf35ff59a72, type: 2}
+  - {fileID: 11400000, guid: 454ebacb9a20f25498337156ce8831d6, type: 2}
   distanceWalked: 0
   seeds:
   - planted: 0
     distance: 0
+    skin: {fileID: 11400000, guid: ef4a3529599ac824c8f01cf35ff59a72, type: 2}
   - planted: 0
     distance: 0
+    skin: {fileID: 11400000, guid: dfdc25e956f368d41bce97d60fd9862c, type: 2}
   - planted: 0
     distance: 0
+    skin: {fileID: 11400000, guid: ecd48a980e534f64090c88419c645fbb, type: 2}
   - planted: 0
     distance: 0
+    skin: {fileID: 11400000, guid: 4d2c506736999fe43b9224fde9ba60f1, type: 2}
   - planted: 0
     distance: 0
+    skin: {fileID: 11400000, guid: ef4a3529599ac824c8f01cf35ff59a72, type: 2}
   - planted: 0
     distance: 0
+    skin: {fileID: 11400000, guid: 8fac79760e76efa4aa83439704a30991, type: 2}
   - planted: 0
     distance: 0
+    skin: {fileID: 11400000, guid: 2f6c039e292a3ef47b6600b740411acf, type: 2}
   - planted: 0
     distance: 0
+    skin: {fileID: 11400000, guid: ecd48a980e534f64090c88419c645fbb, type: 2}
   - planted: 0
     distance: 0
+    skin: {fileID: 11400000, guid: 9c322d5f54cd85645b5b087527b14343, type: 2}
   - planted: 0
     distance: 0
+    skin: {fileID: 11400000, guid: 4d2c506736999fe43b9224fde9ba60f1, type: 2}
   - planted: 0
     distance: 0
+    skin: {fileID: 11400000, guid: 46cc32c7e1487654694204cdc8780e29, type: 2}
   - planted: 0
     distance: 0
+    skin: {fileID: 11400000, guid: 8fac79760e76efa4aa83439704a30991, type: 2}
   - planted: 0
     distance: 0
+    skin: {fileID: 11400000, guid: 46cc32c7e1487654694204cdc8780e29, type: 2}
   - planted: 0
     distance: 0
+    skin: {fileID: 11400000, guid: 4c00412b1d722ad49a071d23a5964b19, type: 2}
   - planted: 0
     distance: 0
+    skin: {fileID: 11400000, guid: a519d03f9fb268f4599e18f086bd4be9, type: 2}
   - planted: 0
     distance: 0
+    skin: {fileID: 0}
   - planted: 0
     distance: 0
+    skin: {fileID: 0}
   - planted: 0
     distance: 0
+    skin: {fileID: 0}
   - planted: 0
     distance: 0
+    skin: {fileID: 0}
   - planted: 0
     distance: 0
+    skin: {fileID: 0}
   username: daniel
   hasWalked: 0

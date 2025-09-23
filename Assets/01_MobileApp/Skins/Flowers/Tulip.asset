@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14402d87290a6cc40b1553775bc0cd35, type: 3}
   m_Name: Tulip
   m_EditorClassIdentifier: Assembly-CSharp::Skin
-  rarity: 1
+  rarity: 3
   skinType: 5
   skin: {fileID: -116734636, guid: 318225552d46c1143a476a1831003ec2, type: 3}
   _ID: f14d1c04-8729-48eb-8f77-7da878303256

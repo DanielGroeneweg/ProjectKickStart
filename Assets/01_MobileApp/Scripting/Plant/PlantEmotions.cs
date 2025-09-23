@@ -25,6 +25,7 @@ public class PlantEmotions : MonoBehaviour
     [Header("References")]
     [SerializeField] private LocationTracker locationTracker;
     [SerializeField] private Inventory inventory;
+    [SerializeField] private Animator animator;
     #endregion
 
     #region Internal
@@ -61,13 +62,19 @@ public class PlantEmotions : MonoBehaviour
     {
         bool value = inventory.hasWalked;
 
+        Debug.Log(value);
+
         if (locationTracker.MetDistanceRequirement())
         {
             plantStatusses.hasMoved = true;
+            animator.SetFloat("Happiness", 1);
+            animator.SetBool("NeedSun", false);
         }
         else
         {
             plantStatusses.hasMoved = false;
+            animator.SetFloat("Happiness", 0);
+            animator.SetBool("NeedSun", true);
         }
 
         if (value != plantStatusses.hasMoved)
@@ -75,6 +82,8 @@ public class PlantEmotions : MonoBehaviour
             Enums.States state = Enums.States.Happy;
             if (!plantStatusses.hasMoved) state = Enums.States.Sad;
             PlantStatusChanged?.Invoke(state);
+
+            Debug.Log(state);
 
             inventory.hasWalked = plantStatusses.hasMoved;
 

@@ -13526,6 +13526,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1283679814324644473, guid: d1ff38c3a89ad7c4d911fa3c58e15892, type: 3}
   m_PrefabInstance: {fileID: 552898838}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1971465281 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1064319031421657094, guid: d1ff38c3a89ad7c4d911fa3c58e15892, type: 3}
+  m_PrefabInstance: {fileID: 552898838}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1971465283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13581,6 +13586,7 @@ MonoBehaviour:
         m_CallState: 2
   locationTracker: {fileID: 845918007}
   inventory: {fileID: 11400000, guid: 57a500540c5c8754f89ec86b64aa176c, type: 2}
+  animator: {fileID: 1971465281}
 --- !u!1 &1972709017
 GameObject:
   m_ObjectHideFlags: 0

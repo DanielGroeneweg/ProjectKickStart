@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14402d87290a6cc40b1553775bc0cd35, type: 3}
   m_Name: Sunglasses
   m_EditorClassIdentifier: Assembly-CSharp::Skin
-  rarity: 0
+  rarity: 2
   skinType: 1
   skin: {fileID: -4908505937487651375, guid: 3af216c0fe2e2d549a4875e46fca5e3e, type: 3}
   _ID: 42030c07-b4d9-4e2a-bd78-174201136180

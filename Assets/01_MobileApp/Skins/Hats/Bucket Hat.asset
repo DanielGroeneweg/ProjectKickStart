@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14402d87290a6cc40b1553775bc0cd35, type: 3}
   m_Name: Bucket Hat
   m_EditorClassIdentifier: Assembly-CSharp::Skin
-  rarity: 0
+  rarity: 2
   skinType: 0
   skin: {fileID: 21300000, guid: de6a65977d95869479489cbe6a6ab4aa, type: 3}
   _ID: e8cac31f-32d5-472a-84b3-7925077d2de7
