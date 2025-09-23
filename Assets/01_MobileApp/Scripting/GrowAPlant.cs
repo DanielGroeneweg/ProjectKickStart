@@ -1,24 +1,28 @@
 using UnityEngine;
-using System.Collections.Generic;
+using UnityEngine.Events;
 using System;
 using UnityEngine.UI;
 public class GrowAPlant : MonoBehaviour
 {
     [SerializeField] private float distanceToGrow = 30;
-    [SerializeField] private LootBox lootbox;
     [Serializable]
     public class Seed
     {
         public bool planted = false;
         public float distance = 0;
+        public Skin skin;
     }
     [SerializeField] private Inventory inventory;
     [SerializeField] private RawImage[] seeds = new RawImage[20];
     [SerializeField] private Texture firstPhase;
     [SerializeField] private Texture secondPhase;
     [SerializeField] private Texture thirdPhase;
-    [SerializeField] private Texture fourthPhase;
+    [SerializeField] private Texture commonFourthPhase;
+    [SerializeField] private Texture rareFourthPhase;
+    [SerializeField] private Texture epicFourthPhase;
+    [SerializeField] private Texture legendaryFourthPhase;
     [SerializeField] private Texture noSeed;
+    [SerializeField] private UnityEvent<Skin> Unlocked;
     private void OnEnable()
     {
         UpdateSeeds();
@@ -34,17 +38,29 @@ public class GrowAPlant : MonoBehaviour
                 if (amount < 0.25f) seeds[i].texture = firstPhase;
                 else if (amount < 0.5f) seeds[i].texture = secondPhase;
                 else if (amount < 0.75f) seeds[i].texture = thirdPhase;
-                else if (amount < 1) seeds[i].texture = fourthPhase;
 
-                if (amount >= 1)
+                else
                 {
-                    lootbox.Open();
-                    seeds[i].texture = noSeed;
-                    inventory.seeds[i].planted = false;
-                    inventory.seeds[i].distance = 0;
+                    if (inventory.seeds[i].skin.rarity == Enums.Rarities.Common) seeds[i].texture = commonFourthPhase;
+                    if (inventory.seeds[i].skin.rarity == Enums.Rarities.Rare) seeds[i].texture = rareFourthPhase;
+                    if (inventory.seeds[i].skin.rarity == Enums.Rarities.Epic) seeds[i].texture = epicFourthPhase;
+                    if (inventory.seeds[i].skin.rarity == Enums.Rarities.Legendary) seeds[i].texture = legendaryFourthPhase;
                 }
             }
             else seeds[i].texture = noSeed;
+        }
+    }
+    public void Unlock(int i)
+    {
+        float amount = inventory.seeds[i].distance / distanceToGrow;
+
+        if (amount >= 1)
+        {
+            inventory.unlockedSkins.Add(inventory.seeds[i].skin);
+            Unlocked?.Invoke(inventory.seeds[i].skin);
+            seeds[i].texture = noSeed;
+            inventory.seeds[i].planted = false;
+            inventory.seeds[i].distance = 0;
         }
     }
 }

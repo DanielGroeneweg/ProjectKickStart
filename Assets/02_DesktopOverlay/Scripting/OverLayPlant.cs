@@ -29,13 +29,16 @@ public class OverLayPlant : MonoBehaviour
         switch(skin.skinType)
         {
             case Enums.SkinTypes.Hat:
-                hat.sprite = skin.skin;
+                if (skin != null) hat.sprite = skin.skin;
+                else hat.sprite = null;
                 break;
             case Enums.SkinTypes.Glasses:
-                glasses.sprite = skin.skin;
+                if (skin != null) glasses.sprite = skin.skin;
+                else glasses.sprite = null;
                 break;
             case Enums.SkinTypes.Scarf:
-                scarf.sprite = skin.skin;
+                if (skin != null) scarf.sprite = skin.skin;
+                else scarf.sprite = null;
                 break;
             case Enums.SkinTypes.Stem:
                 stem.sprite = skin.skin;

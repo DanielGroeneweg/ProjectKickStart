@@ -52,9 +52,9 @@ public class CheckDataBase : MonoBehaviour
                 setSkin?.Invoke(inventory.equippedSkin.flower);
                 setSkin?.Invoke(inventory.equippedSkin.pot);
                 setSkin?.Invoke(inventory.equippedSkin.stem);
-                if (inventory.equippedSkin.scarf != null) setSkin?.Invoke(inventory.equippedSkin.scarf);
-                if (inventory.equippedSkin.glasses != null) setSkin?.Invoke(inventory.equippedSkin.glasses);
-                if (inventory.equippedSkin.hat != null) setSkin?.Invoke(inventory.equippedSkin.hat);
+                setSkin?.Invoke(inventory.equippedSkin.scarf);
+                setSkin?.Invoke(inventory.equippedSkin.glasses);
+                setSkin?.Invoke(inventory.equippedSkin.hat);
             }
         }
 
