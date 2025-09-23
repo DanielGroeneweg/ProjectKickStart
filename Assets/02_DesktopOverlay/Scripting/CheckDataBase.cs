@@ -10,7 +10,7 @@ public class CheckDataBase : MonoBehaviour
     [SerializeField] private float checkTime;
     [SerializeField] private UnityEvent<Enums.States> Moved;
     [SerializeField] private UnityEvent<Enums.States> NotMoved;
-    [SerializeField] private UnityEvent<Skin> setSkin;
+    [SerializeField] private UnityEvent<Skin, Enums.SkinTypes> setSkin;
 
     private static string url = "https://api.statusloop.nl/";
     void Start()
@@ -49,12 +49,12 @@ public class CheckDataBase : MonoBehaviour
                 if (!string.IsNullOrEmpty(wrapper.users[0].scarfID)) inventory.equippedSkin.scarf = availableSkins.skins.Find(s => s.ID == wrapper.users[0].scarfID);
                 if (!string.IsNullOrEmpty(wrapper.users[0].glassesID)) inventory.equippedSkin.glasses = availableSkins.skins.Find(s => s.ID == wrapper.users[0].glassesID);
 
-                setSkin?.Invoke(inventory.equippedSkin.flower);
-                setSkin?.Invoke(inventory.equippedSkin.pot);
-                setSkin?.Invoke(inventory.equippedSkin.stem);
-                setSkin?.Invoke(inventory.equippedSkin.scarf);
-                setSkin?.Invoke(inventory.equippedSkin.glasses);
-                setSkin?.Invoke(inventory.equippedSkin.hat);
+                setSkin?.Invoke(inventory.equippedSkin.flower, Enums.SkinTypes.Flower);
+                setSkin?.Invoke(inventory.equippedSkin.pot, Enums.SkinTypes.Pot);
+                setSkin?.Invoke(inventory.equippedSkin.stem, Enums.SkinTypes.Stem);
+                setSkin?.Invoke(inventory.equippedSkin.hat, Enums.SkinTypes.Hat);
+                setSkin?.Invoke(inventory.equippedSkin.scarf, Enums.SkinTypes.Scarf);
+                setSkin?.Invoke(inventory.equippedSkin.glasses, Enums.SkinTypes.Glasses);
             }
         }
 

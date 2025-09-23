@@ -59,10 +59,21 @@ public class AppStartUp : MonoBehaviour
             {
                 flower = defaultFlower,
                 stem = defaultStem,
-                pot = defaultPot
+                pot = defaultPot,
+                hat = null,
+                scarf = null,
+                glasses = null
             };
             inventory.username = string.Empty;
             inventory.hasWalked = true;
+
+            OverLayPlant.instance.SetSkin(inventory.equippedSkin.flower, Enums.SkinTypes.Flower);
+            OverLayPlant.instance.SetSkin(inventory.equippedSkin.pot, Enums.SkinTypes.Pot);
+            OverLayPlant.instance.SetSkin(inventory.equippedSkin.stem, Enums.SkinTypes.Stem);
+            OverLayPlant.instance.SetSkin(inventory.equippedSkin.hat, Enums.SkinTypes.Hat);
+            OverLayPlant.instance.SetSkin(inventory.equippedSkin.scarf, Enums.SkinTypes.Scarf);
+            OverLayPlant.instance.SetSkin(inventory.equippedSkin.glasses, Enums.SkinTypes.Glasses);
+
             NoSaveFile?.Invoke();
         }
     }

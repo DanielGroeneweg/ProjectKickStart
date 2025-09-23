@@ -31,6 +31,7 @@ public class GrowAPlant : MonoBehaviour
     {
         for (int i = 0; i < seeds.Length; i++)
         {
+            Debug.Log(i);
             if (inventory.seeds[i].planted)
             {
                 float amount = inventory.seeds[i].distance / distanceToGrow;
