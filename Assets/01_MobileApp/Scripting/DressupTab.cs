@@ -1,12 +1,30 @@
 using UnityEngine;
+using System.Collections.Generic;
 public class DressupTab : MonoBehaviour
 {
     [SerializeField] private Inventory inventory;
     [SerializeField] private SkinEquip prefab;
+    private List<SkinEquip> skins = new List<SkinEquip>();
     private void OnEnable()
     {
+        for (int i = skins.Count - 1; i >= 0; i--)
+        {
+            SkinEquip skin = skins[i];
+            skins.Remove(skin);
+            Destroy(skin.gameObject);
+        }
+
         foreach (Skin skin in inventory.unlockedSkins)
         {
+            bool isInList = false;
+
+            foreach (SkinEquip skinInList in skins)
+            {
+                if (skinInList.skin == skin) isInList = true;
+            }
+
+            if (isInList) continue;
+
             SkinEquip obj = Instantiate(prefab, transform);
             obj.skin = skin;
 
@@ -21,6 +39,7 @@ public class DressupTab : MonoBehaviour
             croppedTexture.SetPixels(pixels);
             croppedTexture.Apply();
             obj.image.texture = croppedTexture;
+            skins.Add(obj);
         }
     }
 }
