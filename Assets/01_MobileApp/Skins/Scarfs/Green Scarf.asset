@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Green Scarf
   m_EditorClassIdentifier: Assembly-CSharp::Skin
   rarity: 0
-  skinType: 0
-  skin: {fileID: 0}
-  _ID: 
+  skinType: 2
+  skin: {fileID: 21300000, guid: 665b4e6de60872448878dd18fb307952, type: 3}
+  _ID: adbeed4a-9dcb-48d6-87a0-e8460dbbf80a

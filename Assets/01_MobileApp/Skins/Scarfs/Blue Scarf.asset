@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Blue Scarf
   m_EditorClassIdentifier: Assembly-CSharp::Skin
   rarity: 0
-  skinType: 0
-  skin: {fileID: 0}
-  _ID: 
+  skinType: 2
+  skin: {fileID: 21300000, guid: 28ab341fc37ac9c43967319791ba4b44, type: 3}
+  _ID: ab4e5194-b369-4393-bf41-d30b9d79bb61

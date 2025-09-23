@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Purple Scarf
   m_EditorClassIdentifier: Assembly-CSharp::Skin
   rarity: 0
-  skinType: 0
-  skin: {fileID: 0}
-  _ID: 
+  skinType: 2
+  skin: {fileID: 21300000, guid: 2b416ac5a9965b74c88f5ebb6d9372d7, type: 3}
+  _ID: df666b04-8a68-4d5c-99a7-182ac4a58029

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Cyan Scarf
   m_EditorClassIdentifier: Assembly-CSharp::Skin
   rarity: 0
-  skinType: 0
-  skin: {fileID: 0}
-  _ID: 
+  skinType: 2
+  skin: {fileID: 21300000, guid: 6fc97fcb23dce9f4591b6b060a447776, type: 3}
+  _ID: d2b99f64-f34c-4138-8121-f608a8386240

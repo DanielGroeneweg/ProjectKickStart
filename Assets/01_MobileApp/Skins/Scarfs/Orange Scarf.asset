@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Orange Scarf
   m_EditorClassIdentifier: Assembly-CSharp::Skin
   rarity: 0
-  skinType: 0
-  skin: {fileID: 0}
-  _ID: 
+  skinType: 2
+  skin: {fileID: 21300000, guid: 015e44b66b7ea9e4eb852c8aae87f6f1, type: 3}
+  _ID: 5d138a17-4a4a-45ff-af68-3f4215b415b7
