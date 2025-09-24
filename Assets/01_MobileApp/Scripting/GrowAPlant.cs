@@ -31,9 +31,13 @@ public class GrowAPlant : MonoBehaviour
     {
         for (int i = 0; i < seeds.Length; i++)
         {
-            Debug.Log(i);
             if (inventory.seeds[i].planted)
             {
+                seeds[i].texture = noSeed;
+                Color color = seeds[i].color;
+                color.a = 255;
+                seeds[i].color = color;
+
                 float amount = inventory.seeds[i].distance / distanceToGrow;
 
                 if (amount < 0.25f) seeds[i].texture = firstPhase;
@@ -48,7 +52,13 @@ public class GrowAPlant : MonoBehaviour
                     if (inventory.seeds[i].skin.rarity == Enums.Rarities.Legendary) seeds[i].texture = legendaryFourthPhase;
                 }
             }
-            else seeds[i].texture = noSeed;
+            else
+            {
+                seeds[i].texture = noSeed;
+                Color color = seeds[i].color;
+                color.a = 0;
+                seeds[i].color = color;
+            }
         }
     }
     public void Unlock(int i)

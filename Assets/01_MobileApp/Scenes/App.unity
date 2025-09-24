@@ -9326,7 +9326,7 @@ MonoBehaviour:
   rareFourthPhase: {fileID: 2800000, guid: 3426bdff008be9943ab6ba483605abeb, type: 3}
   epicFourthPhase: {fileID: 2800000, guid: adf474026463bad42b8fe65303a54815, type: 3}
   legendaryFourthPhase: {fileID: 2800000, guid: 6c74111821e7fc24eb4753033ca1b287, type: 3}
-  noSeed: {fileID: 10904, guid: 0000000000000000f000000000000000, type: 0}
+  noSeed: {fileID: 0}
   Unlocked:
     m_PersistentCalls:
       m_Calls:
@@ -15405,7 +15405,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124511537}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2767e6401ac89645861762c76b68662, type: 3}
   m_Name: 
