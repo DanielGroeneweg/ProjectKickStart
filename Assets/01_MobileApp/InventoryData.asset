@@ -14,77 +14,84 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
   equippedSkin:
     flower: {fileID: 11400000, guid: 6a7df66913e752c48870a8e9f87dc9fb, type: 2}
-    stem: {fileID: 11400000, guid: 454ebacb9a20f25498337156ce8831d6, type: 2}
-    pot: {fileID: 11400000, guid: ef4a3529599ac824c8f01cf35ff59a72, type: 2}
-    hat: {fileID: 0}
-    scarf: {fileID: 0}
-    glasses: {fileID: 0}
-  coins: 0
+    stem: {fileID: 11400000, guid: a519d03f9fb268f4599e18f086bd4be9, type: 2}
+    pot: {fileID: 11400000, guid: 9976101bc51cc7f4dadf559b06fb62eb, type: 2}
+    hat: {fileID: 11400000, guid: a0f1ebd80c158664c89f34047f4e8574, type: 2}
+    scarf: {fileID: 11400000, guid: 3e73569c73ed2e4409f39d39f8dea861, type: 2}
+    glasses: {fileID: 11400000, guid: 9da496072edc5774cbec5f200959b54e, type: 2}
+  coins: 750
   unlockedSkins:
   - {fileID: 11400000, guid: 6a7df66913e752c48870a8e9f87dc9fb, type: 2}
   - {fileID: 11400000, guid: ef4a3529599ac824c8f01cf35ff59a72, type: 2}
   - {fileID: 11400000, guid: 454ebacb9a20f25498337156ce8831d6, type: 2}
+  - {fileID: 11400000, guid: a0f1ebd80c158664c89f34047f4e8574, type: 2}
+  - {fileID: 11400000, guid: 778a550a25d4dda498a9398f655a3b6b, type: 2}
+  - {fileID: 11400000, guid: 9976101bc51cc7f4dadf559b06fb62eb, type: 2}
+  - {fileID: 11400000, guid: 3e73569c73ed2e4409f39d39f8dea861, type: 2}
+  - {fileID: 11400000, guid: 778a550a25d4dda498a9398f655a3b6b, type: 2}
+  - {fileID: 11400000, guid: a519d03f9fb268f4599e18f086bd4be9, type: 2}
+  - {fileID: 11400000, guid: 9da496072edc5774cbec5f200959b54e, type: 2}
   distanceWalked: 0
   seeds:
-  - planted: 0
-    distance: 0
-    skin: {fileID: 11400000, guid: ef4a3529599ac824c8f01cf35ff59a72, type: 2}
-  - planted: 0
-    distance: 0
-    skin: {fileID: 11400000, guid: dfdc25e956f368d41bce97d60fd9862c, type: 2}
-  - planted: 0
-    distance: 0
-    skin: {fileID: 11400000, guid: ecd48a980e534f64090c88419c645fbb, type: 2}
-  - planted: 0
-    distance: 0
-    skin: {fileID: 11400000, guid: 4d2c506736999fe43b9224fde9ba60f1, type: 2}
-  - planted: 0
-    distance: 0
-    skin: {fileID: 11400000, guid: ef4a3529599ac824c8f01cf35ff59a72, type: 2}
-  - planted: 0
-    distance: 0
-    skin: {fileID: 11400000, guid: 8fac79760e76efa4aa83439704a30991, type: 2}
-  - planted: 0
-    distance: 0
-    skin: {fileID: 11400000, guid: 2f6c039e292a3ef47b6600b740411acf, type: 2}
-  - planted: 0
-    distance: 0
-    skin: {fileID: 11400000, guid: ecd48a980e534f64090c88419c645fbb, type: 2}
-  - planted: 0
-    distance: 0
-    skin: {fileID: 11400000, guid: 9c322d5f54cd85645b5b087527b14343, type: 2}
-  - planted: 0
-    distance: 0
-    skin: {fileID: 11400000, guid: 4d2c506736999fe43b9224fde9ba60f1, type: 2}
-  - planted: 0
-    distance: 0
-    skin: {fileID: 11400000, guid: 46cc32c7e1487654694204cdc8780e29, type: 2}
-  - planted: 0
-    distance: 0
-    skin: {fileID: 11400000, guid: 8fac79760e76efa4aa83439704a30991, type: 2}
-  - planted: 0
-    distance: 0
-    skin: {fileID: 11400000, guid: 46cc32c7e1487654694204cdc8780e29, type: 2}
-  - planted: 0
-    distance: 0
-    skin: {fileID: 11400000, guid: 4c00412b1d722ad49a071d23a5964b19, type: 2}
+  - planted: 1
+    distance: 32
+    skin: {fileID: 11400000, guid: e38af19cf6d869d41a21c834b83a3a12, type: 2}
   - planted: 0
     distance: 0
     skin: {fileID: 11400000, guid: a519d03f9fb268f4599e18f086bd4be9, type: 2}
+  - planted: 1
+    distance: 32
+    skin: {fileID: 11400000, guid: 454ebacb9a20f25498337156ce8831d6, type: 2}
+  - planted: 1
+    distance: 32
+    skin: {fileID: 11400000, guid: 0a42447ee232f124aadab47f56532c29, type: 2}
   - planted: 0
     distance: 0
-    skin: {fileID: 0}
+    skin: {fileID: 11400000, guid: 3e73569c73ed2e4409f39d39f8dea861, type: 2}
   - planted: 0
     distance: 0
-    skin: {fileID: 0}
-  - planted: 0
-    distance: 0
-    skin: {fileID: 0}
-  - planted: 0
-    distance: 0
-    skin: {fileID: 0}
-  - planted: 0
-    distance: 0
-    skin: {fileID: 0}
+    skin: {fileID: 11400000, guid: 778a550a25d4dda498a9398f655a3b6b, type: 2}
+  - planted: 1
+    distance: 32
+    skin: {fileID: 11400000, guid: 9e0507029f422314dae63f9f05456d60, type: 2}
+  - planted: 1
+    distance: 32
+    skin: {fileID: 11400000, guid: 778a550a25d4dda498a9398f655a3b6b, type: 2}
+  - planted: 1
+    distance: 32
+    skin: {fileID: 11400000, guid: 778a550a25d4dda498a9398f655a3b6b, type: 2}
+  - planted: 1
+    distance: 32
+    skin: {fileID: 11400000, guid: 46cc32c7e1487654694204cdc8780e29, type: 2}
+  - planted: 1
+    distance: 32
+    skin: {fileID: 11400000, guid: e38af19cf6d869d41a21c834b83a3a12, type: 2}
+  - planted: 1
+    distance: 32
+    skin: {fileID: 11400000, guid: dfdc25e956f368d41bce97d60fd9862c, type: 2}
+  - planted: 1
+    distance: 32
+    skin: {fileID: 11400000, guid: dfdc25e956f368d41bce97d60fd9862c, type: 2}
+  - planted: 1
+    distance: 32
+    skin: {fileID: 11400000, guid: 454ebacb9a20f25498337156ce8831d6, type: 2}
+  - planted: 1
+    distance: 32
+    skin: {fileID: 11400000, guid: a0f1ebd80c158664c89f34047f4e8574, type: 2}
+  - planted: 1
+    distance: 32
+    skin: {fileID: 11400000, guid: aba66216ce3582740953240bf70c45e5, type: 2}
+  - planted: 1
+    distance: 32
+    skin: {fileID: 11400000, guid: fd4ff92886c202049b582b8b33b4f3a2, type: 2}
+  - planted: 1
+    distance: 32
+    skin: {fileID: 11400000, guid: 3483a09970a1d4c428ab204beae6b2b4, type: 2}
+  - planted: 1
+    distance: 32
+    skin: {fileID: 11400000, guid: 46cc32c7e1487654694204cdc8780e29, type: 2}
+  - planted: 1
+    distance: 32
+    skin: {fileID: 11400000, guid: ecd48a980e534f64090c88419c645fbb, type: 2}
   username: daniel
-  hasWalked: 0
+  hasWalked: 1
